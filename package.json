@@ -1,0 +1,24 @@
+{
+  "name": "cix",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "ci"
+  ],
+  "author": "Houfeng",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.5.2",
+    "cify": "0.0.6",
+    "co": "^4.6.0",
+    "exec-shell": "0.0.3",
+    "nokitjs": "^1.24.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
+}
