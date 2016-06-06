@@ -7,16 +7,20 @@ var demo1 = server.project('demo1', {
   repertory: 'https://github.com/houfeng/cix.git'
 });
 
-demo1.job('pull', ci.series([ci.parallel([
+demo1.job('pull', ci.parallel([
   function (context, done) {
-    console.log('pull1');
-    done();
+    setTimeout(function () {
+      console.log('pull1');
+      done();
+    }, 1500);
   },
   function (context, done) {
-    console.log('pull2');
-    done();
+    setTimeout(function () {
+      console.log('pull2');
+      done();
+    }, 1000);
   }
-])]));
+]));
 
 demo1.job('build', ci.on('demo1.pull', function (context, done) {
   console.log('build');
