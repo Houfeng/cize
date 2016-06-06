@@ -9,26 +9,29 @@ var demo1 = server.project('demo1', {
 
 demo1.job('pull', ci.parallel([
   function (context, done) {
-    setTimeout(function () {
-      console.log('pull1');
-      done();
-    }, 1500);
+    context.console.log('pull1');
+    done();
   },
   function (context, done) {
-    setTimeout(function () {
-      console.log('pull2');
-      done();
-    }, 1000);
-  }
+    context.console.log('pull2');
+    done();
+  },
+  ci.shell(function () {
+    /*
+    echo pull3
+    ls
+    */
+  })
 ]));
 
-demo1.job('build', ci.on('demo1.pull', function (context, done) {
-  console.log('build');
+demo1.job('build', ci.on('pull', function (context, done) {
+  context.console.log('build');
   done();
 }));
 
 server.start(function () {
-  demo1.invoke('pull', function (err) {
-    if (err) console.log(err);
+  demo1.invoke('pull', function (err, context) {
+    if (err) throw (err);
+    console.log(context.path);
   });
 });
