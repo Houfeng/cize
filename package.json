@@ -16,7 +16,8 @@
     "cify": "0.0.6",
     "co": "^4.6.0",
     "exec-shell": "0.0.3",
-    "nokitjs": "^1.24.0"
+    "nokitjs": "^1.24.0",
+    "real-utils": "0.0.1"
   },
   "devDependencies": {
     "mocha": "^2.5.3"
