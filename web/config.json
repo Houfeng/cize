@@ -8,6 +8,9 @@
     }
   },
   "folders": {
-    "public": {}
+    "public": {
+      "^/bootstrap(.*)": "../node_modules/bootstrap/dist",
+      "^/jquery(.*)": "../node_modules/jquery/dist"
+    }
   }
 }

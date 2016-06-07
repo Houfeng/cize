@@ -16,6 +16,7 @@
     "bootstrap": "^3.3.6",
     "cify": "0.0.6",
     "exec-shell": "0.0.3",
+    "jquery": "^2.2.4",
     "lodash": "^4.13.1",
     "lowdb": "^0.13.0",
     "mkdir-p": "0.0.7",

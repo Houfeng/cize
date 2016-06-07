@@ -1,48 +1,48 @@
-html, body {
+html, body, .container-main {
   height: 100%;
-  padding: 0px;
-  margin: 0px;
-  color: #333;
-  font-size: 16px;
-  font-family: "Helvetica", "Microsoft YaHei", "SimHei";
+  padding: 0;
+  margin: 0;
 }
 
-input, select, textarea, button {
-  font-size: 16px;
-  font-family: "Helvetica", "Microsoft YaHei", "SimHei";
+body {
+  padding-top: 50px;
+  background-color: #fefefe;
 }
 
-.header {
-  background-color: #303030;
-  padding: 10px 15px;
-  color: #f3f3f3;
-  font-size: 18px;
-  font-weight: bold;
+.dashboard, .dashboard-col {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
 }
 
-.content {
-  padding: 25px 15px;
+.dashboard-col {
+  border-right: 0;
+  border-bottom: 0;
+  border-top: 0;
+  padding-top: 41px;
 }
 
-.content a {
-  color: #333;
+.dashboard-col .panel-heading {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
 
-.quote {
-  margin: 0px;
-  padding: 10px;
-  font-style: italic;
-  color: #666;
+.dashboard-col:first-child {
+  border-left: 0;
 }
 
-.footer {
-  padding: 10px 15px;
-  background-color: #fafafa;
-  border-top: solid 1px #ddd;
-  color: #888;
-  font-size: 14px;
+.dashboard .list-group {
+  border-radius: 0;
+  height: 100%;
+  overflow: auto;
 }
 
-.footer a {
-  color: #888;
+.dashboard .list-group-item {
+  border-radius: 0 !important;
+  cursor: pointer;
+  border: 1px solid #e9e9e9;
 }

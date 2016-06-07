@@ -1,5 +1,29 @@
 <% $.master("./master.html") %> 
 
 <% $.placeBegin("content") %>
-<%= $.locale.hello() %> <%= this.name %>!
+<div class="row dashboard">
+  <div class="col-md-2 panel panel-default dashboard-col">
+    <div class="panel-heading text-uppercase">Projects</div>
+    <div class="list-group">
+      <% for(var i=0;i<5;i++){ %>
+      <a class="list-group-item">
+        <div class="list-group-item-heading">项目 <%= i %></div>
+        <div class="list-group-item-text">Build: #105</div>
+      </a>
+      <% } %>
+    </div>
+  </div>
+  <div class="col-md-2 panel panel-default dashboard-col">
+    <div class="panel-heading text-uppercase">Jobs</div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+  <div class="col-md-8 panel panel-default dashboard-col">
+    <div class="panel-heading text-uppercase">Record</div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+</div>
 <% $.placeEnd() %>

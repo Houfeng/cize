@@ -4,18 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes" />
-  <title><%= $.server.pkg.name.toUpperCase() %></title>
-  <link rel="stylesheet" href="/css/common.css">
+  <title>
+   DASHBOARD | <%= $.server.pkg.name.toUpperCase() %>
+  </title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/common.css" />
+  <% $.placeHolder('head') %>
 </head>
 
 <body>
-  <div class='header'><%= $.server.pkg.name.toUpperCase() %></div>
-  <div class='content'>
-    <% $.placeHolder("content") %>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand text-uppercase" href="javascript:;">
+           <%= $.server.pkg.name %>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid container-main">
+    <% $.placeHolder('content') %>
   </div>
-  <div class='footer'>
-   Powered By <%= $.server.pkg.name.toUpperCase() %> , version <%= $.server.pkg.version %>
-  </div>
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <% $.placeHolder('foot') %>
 </body>
 
 </html>
