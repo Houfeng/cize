@@ -1,0 +1,48 @@
+html, body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  color: #333;
+  font-size: 16px;
+  font-family: "Helvetica", "Microsoft YaHei", "SimHei";
+}
+
+input, select, textarea, button {
+  font-size: 16px;
+  font-family: "Helvetica", "Microsoft YaHei", "SimHei";
+}
+
+.header {
+  background-color: #303030;
+  padding: 10px 15px;
+  color: #f3f3f3;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 25px 15px;
+}
+
+.content a {
+  color: #333;
+}
+
+.quote {
+  margin: 0px;
+  padding: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+.footer {
+  padding: 10px 15px;
+  background-color: #fafafa;
+  border-top: solid 1px #ddd;
+  color: #888;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #888;
+}

@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^1.5.2",
+    "bootstrap": "^3.3.6",
     "cify": "0.0.6",
     "exec-shell": "0.0.3",
     "lodash": "^4.13.1",

@@ -1,0 +1,13 @@
+{
+  "handlers": {
+    "^/": "$./handlers/mvc"
+  },
+  "mvc": {
+    "routes": {
+      "/": "./main"
+    }
+  },
+  "folders": {
+    "public": {}
+  }
+}

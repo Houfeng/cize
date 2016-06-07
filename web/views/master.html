@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes" />
+  <title><%= $.server.pkg.name.toUpperCase() %></title>
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+
+<body>
+  <div class='header'><%= $.server.pkg.name.toUpperCase() %></div>
+  <div class='content'>
+    <% $.placeHolder("content") %>
+  </div>
+  <div class='footer'>
+   Powered By <%= $.server.pkg.name.toUpperCase() %> , version <%= $.server.pkg.version %>
+  </div>
+</body>
+
+</html>

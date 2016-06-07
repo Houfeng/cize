@@ -30,8 +30,8 @@ demo1.job('build', ci.on('pull', function (context, done) {
 }));
 
 server.start(function () {
-  demo1.invoke('pull', function (err, context) {
-    if (err) throw (err);
-    console.log(context.path);
-  });
+  // demo1.invoke('pull', function (err, context) {
+  //   if (err) throw (err);
+  //   console.log(context.path);
+  // });
 });
