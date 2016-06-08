@@ -4,7 +4,8 @@
   },
   "mvc": {
     "routes": {
-      "/": "./main"
+      "/": "./main",
+      "/{project}/{job}/trigger": "./trigger"
     }
   },
   "folders": {

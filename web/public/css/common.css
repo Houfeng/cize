@@ -19,8 +19,7 @@ body {
 .dashboard-col {
   border-right: 0;
   border-bottom: 0;
-  border-top: 0;
-  padding-top: 41px;
+  padding-top: 40px;
 }
 
 .dashboard-col .panel-heading {

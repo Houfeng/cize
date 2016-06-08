@@ -1,26 +1,32 @@
 <% $.master("./master.html") %> 
 
+<% $.placeBegin("head") %>
+<title>
+  <%= $.locale.dashborad() %> | <%= $.server.pkg.name.toUpperCase() %>
+</title>
+<% $.placeEnd() %>
+
 <% $.placeBegin("content") %>
 <div class="row dashboard">
   <div class="col-md-2 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase">Projects</div>
+    <div class="panel-heading text-uppercase"><%= $.locale.projects() %></div>
     <div class="list-group">
-      <% for(var i=0;i<5;i++){ %>
+      <% $.each($.server.ci.projects,function(name, project){ %>
       <a class="list-group-item">
-        <div class="list-group-item-heading">项目 <%= i %></div>
+        <div class="list-group-item-heading"><%= name %></div>
         <div class="list-group-item-text">Build: #105</div>
       </a>
-      <% } %>
+      <% }) %>
     </div>
   </div>
   <div class="col-md-2 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase">Jobs</div>
+    <div class="panel-heading text-uppercase"><%= $.locale.jobs() %></div>
     <div class="panel-body">
       Panel content
     </div>
   </div>
   <div class="col-md-8 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase">Record</div>
+    <div class="panel-heading text-uppercase"><%= $.locale.records() %></div>
     <div class="panel-body">
       Panel content
     </div>

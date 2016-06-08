@@ -1,3 +1,6 @@
 {
-  "hello": "你好"
+  "projects": "项目",
+  "jobs": "任务",
+  "records": "记录",
+  "dashborad": "仪表盘"
 }
