@@ -5,3 +5,4 @@ exports.shell = require('./lib/shell');
 exports.on = require('./lib/on');
 exports.series = require('./lib/series');
 exports.parallel = require('./lib/parallel');
+exports.crontab = require('./lib/crontab');

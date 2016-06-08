@@ -20,7 +20,8 @@
     "lodash": "^4.13.1",
     "lowdb": "^0.13.0",
     "mkdir-p": "0.0.7",
-    "nokitjs": "^1.24.0",
+    "node-crontab": "0.0.8",
+    "nokitjs": "^1.24.1",
     "real-utils": "0.0.1"
   },
   "devDependencies": {
