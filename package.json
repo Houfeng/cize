@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "cix": "./bin/cli.js"
+  },
   "scripts": {
     "test": "npm test"
   },
   "keywords": [
-    "ci"
+    "CI",
+    "Continuous integration"
   ],
   "author": "Houfeng",
   "license": "MIT",
