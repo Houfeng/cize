@@ -1,10 +1,11 @@
 var ci = require('../');
-var server = new ci.Server({
+
+ci.init({
   workspace: '/Users/Houfeng/Desktop/cix-root',
   port: 8090
 });
 
-var demo1 = server.project('demo1', {
+var demo1 = ci.project('demo1', {
   repertory: 'https://github.com/houfeng/cix.git'
 });
 
@@ -24,7 +25,7 @@ demo1.job('build', ci.on(['pull'], function (done) {
   done();
 }));
 
-server.start(function () {
+ci.start(function () {
   demo1.invoke('pull', function (err, job) {
     if (err) throw (err);
   });

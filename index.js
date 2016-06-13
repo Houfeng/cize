@@ -1,4 +1,6 @@
-exports.Server = require('./lib/server');
+var Server = require('./lib/server');
+var exports = new Server();
+exports.Server = Server;
 exports.Project = require('./lib/project');
 exports.Job = require('./lib/job');
 exports.shell = require('./lib/shell');
@@ -6,3 +8,4 @@ exports.on = require('./lib/on');
 exports.series = require('./lib/series');
 exports.parallel = require('./lib/parallel');
 exports.crontab = require('./lib/crontab');
+module.exports = exports;
