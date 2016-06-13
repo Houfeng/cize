@@ -18,13 +18,13 @@
   "dependencies": {
     "async": "^1.5.2",
     "bootstrap": "^3.3.6",
-    "cify": "0.0.7",
+    "cify": "^1.0.0",
+    "cron": "^1.1.0",
     "exec-shell": "0.0.3",
     "jquery": "^2.2.4",
     "lodash": "^4.13.1",
     "lowdb": "^0.13.0",
     "mkdir-p": "0.0.7",
-    "node-crontab": "0.0.8",
     "nokitjs": "^1.24.1",
     "real-utils": "0.0.1"
   },
