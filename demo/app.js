@@ -10,7 +10,7 @@ var demo1 = ci.project('demo1', {
 });
 
 demo1.job('pull', ci.series(function (done) {
-  this.console.log('pull1');
+  this.console.log1('pull1');
   console.log('pull1');
   done();
 }, function (done) {
@@ -27,6 +27,6 @@ demo1.job('build', ci.on(['pull'], function (done) {
 
 ci.start(function () {
   demo1.invoke('pull', function (err, job) {
-    if (err) throw (err);
+    throw new Error('e2');
   });
 });
