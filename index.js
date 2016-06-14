@@ -10,4 +10,5 @@ exports.serial = require('./lib/series');
 exports.parallel = require('./lib/parallel');
 exports.cron = require('./lib/cron');
 exports.crontab = require('./lib/cron');
+exports.Store = require('./lib/store');
 module.exports = exports;
