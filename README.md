@@ -1,1 +1,1 @@
-Use CIX, like gulp, for continuous integration.
+Use CIZE, like gulp, for continuous integration.
