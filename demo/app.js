@@ -25,8 +25,4 @@ demo1.job('build', ci.on(['pull'], function (done) {
   done();
 }));
 
-ci.start(function () {
-  demo1.invoke('pull', function (err, job) {
-    if (err) throw err;
-  });
-});
+ci.start();

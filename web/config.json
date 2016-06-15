@@ -5,7 +5,10 @@
   "mvc": {
     "routes": {
       "/": "./main",
-      "/{project}/{job}/trigger": "./trigger"
+      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": "./trigger",
+      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
+      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
+      "/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main"
     }
   },
   "folders": {

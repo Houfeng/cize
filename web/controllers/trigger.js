@@ -16,9 +16,11 @@ var TriggerController = nokit.define({
    **/
   index: function () {
     var self = this;
-    self.context.send({
-
-    });
+    self.server.ci.invoke(
+      self.context.params.project,
+      self.context.params.job
+    );
+    self.context.send({});
   }
 
 });

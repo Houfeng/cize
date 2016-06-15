@@ -11,7 +11,7 @@
   <div class="col-md-2 panel panel-default dashboard-col">
     <div class="panel-heading text-uppercase"><%= $.locale.projects() %></div>
     <div class="list-group">
-      <% $.each($.server.ci.projects,function(name, project){ %>
+      <% $.each(this.projects,function(name, project){ %>
       <a class="list-group-item">
         <div class="list-group-item-heading"><%= name %></div>
         <div class="list-group-item-text">Build: #105</div>
@@ -21,14 +21,24 @@
   </div>
   <div class="col-md-2 panel panel-default dashboard-col">
     <div class="panel-heading text-uppercase"><%= $.locale.jobs() %></div>
-    <div class="panel-body">
-      Panel content
+    <div class="list-group">
+      <% $.each(this.jobs,function(name, job){ %>
+      <a class="list-group-item">
+        <div class="list-group-item-heading"><%= name %></div>
+        <div class="list-group-item-text">Build: #105</div>
+      </a>
+      <% }) %>
     </div>
   </div>
   <div class="col-md-8 panel panel-default dashboard-col">
     <div class="panel-heading text-uppercase"><%= $.locale.records() %></div>
-    <div class="panel-body">
-      Panel content
+    <div class="list-group">
+      <% $.each(this.records,function(index, record){ %>
+      <a class="list-group-item">
+        <div class="list-group-item-heading">#<%= record.sn %></div>
+        <div class="list-group-item-text"></div>
+      </a>
+      <% }) %>
     </div>
   </div>
 </div>
