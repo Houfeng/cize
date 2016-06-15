@@ -10,11 +10,12 @@ var demo1 = ci.project('demo1', {
 });
 
 demo1.job('pull', ci.series(function (done) {
-  console.log1('pull1');
+  console.log('pull1');
   done();
 }, ci.shell(function () {
   /*
-  ping www.baidu.com 
+  echo $PWD
+  ls
   */
 })));
 

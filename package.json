@@ -14,19 +14,23 @@
     "Continuous integration"
   ],
   "author": "Houfeng",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Houfeng/cize.git"
+  },
   "license": "MIT",
   "dependencies": {
     "async": "^1.5.2",
     "bootstrap": "^3.3.6",
     "cify": "^1.0.0",
     "cron": "^1.1.0",
-    "exec-shell": "0.0.3",
     "jquery": "^2.2.4",
     "lodash": "^4.13.1",
     "mkdir-p": "0.0.7",
     "nedb": "^1.8.0",
     "nokitjs": "^1.24.2",
-    "real-utils": "0.0.1"
+    "real-utils": "0.0.1",
+    "shify": "0.0.6"
   },
   "devDependencies": {
     "mocha": "^2.5.3"
