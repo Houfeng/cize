@@ -1,13 +1,13 @@
 {
   "name": "cize",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "bin": {
     "cix": "./bin/cli.js"
   },
   "scripts": {
-    "test": "npm test"
+    "test": "mocha"
   },
   "keywords": [
     "CI",
