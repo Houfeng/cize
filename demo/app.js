@@ -10,7 +10,7 @@ var demo1 = ci.project('demo1', {
 });
 
 demo1.job('pull', ci.series(function (done) {
-  console.log('pull1');
+  this.console.log('pull1');
   done();
 }, ci.shell(function () {
   /*
