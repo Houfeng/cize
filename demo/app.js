@@ -1,12 +1,12 @@
 var ci = require('../');
 
 ci.init({
-  workspace: '/Users/Houfeng/Desktop/cix-root',
+  workspace: '/Users/Houfeng/Desktop/cize-root',
   port: 8090
 });
 
 var demo1 = ci.project('demo1', {
-  repertory: 'https://github.com/houfeng/cix.git'
+  repertory: 'https://github.com/houfeng/cize.git'
 });
 
 demo1.job('pull', ci.series(function (done) {
