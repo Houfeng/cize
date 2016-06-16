@@ -2,7 +2,7 @@
 
 <% $.placeBegin("head") %>
 <title>
-  <%= $.locale.dashborad() %> | <%= $.server.pkg.name.toUpperCase() %>
+  <%= $.locale.dashborad() %> | <%= $.server.ci.pkg.name.toUpperCase() %>
 </title>
 <% $.placeEnd() %>
 
@@ -19,7 +19,7 @@
       <% }) %>
     </div>
   </div>
-  <div class="col-md-2 panel panel-default dashboard-col">
+  <div class="col-md-3 panel panel-default dashboard-col">
     <div class="panel-heading text-uppercase"><%= $.locale.jobs() %></div>
     <div class="list-group">
       <% $.each(this.jobs,function(name, job){ %>
@@ -30,13 +30,13 @@
       <% }) %>
     </div>
   </div>
-  <div class="col-md-8 panel panel-default dashboard-col">
+  <div class="col-md-7 panel panel-default dashboard-col">
     <div class="panel-heading text-uppercase"><%= $.locale.records() %></div>
     <div class="list-group">
       <% $.each(this.records,function(index, record){ %>
       <a class="list-group-item">
         <div class="list-group-item-heading">#<%= record.sn %></div>
-        <div class="list-group-item-text">#<%= record.name %></div>
+        <div class="list-group-item-text"><%= record.name %></div>
       </a>
       <% }) %>
     </div>
