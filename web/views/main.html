@@ -15,11 +15,11 @@
     </div>
     <div class="list-group">
       <% $.each(this.projects,function(name, project){ %>
-      <a class="list-group-item">
+      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/<%= name %>">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
-      <% }) %>
+      <% }.bind(this)) %>
     </div>
   </div>
   <div class="col-md-3 panel panel-default dashboard-col">
@@ -29,11 +29,11 @@
     </div>
     <div class="list-group">
       <% $.each(this.jobs,function(name, job){ %>
-      <a class="list-group-item">
+      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/<%= this.projectName %>/<%= name %>">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
-      <% }) %>
+      <% }.bind(this)) %>
     </div>
   </div>
   <div class="col-md-7 panel panel-default dashboard-col">
@@ -47,7 +47,7 @@
         <h4 class="list-group-item-heading">
           # <%= record.sn %> 
           <% if(record.status == 300){ %>
-          <i class="fa fa-meh-o pull-right" aria-hidden="true" style="color:red;"></i>
+          <i class="fa fa-meh-o pull-right" aria-hidden="true" style="color:brown;"></i>
           <% } else if(record.status == 200){ %>
           <i class="fa fa-smile-o pull-right" aria-hidden="true" style="color:green;"></i>
           <% } else { %>
@@ -64,7 +64,7 @@
           <%= $.formatDate(record.endTime,'MM-dd hh:mm:ss') %>
         </div>
       </a>
-      <% }) %>
+      <% }.bind(this)) %>
     </div>
   </div>
 </div>
