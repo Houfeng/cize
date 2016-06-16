@@ -2,7 +2,8 @@ var ci = require('../');
 
 ci.init({
   workspace: '/Users/Houfeng/Desktop/cize-root',
-  port: 8090
+  port: 8090,
+  secret: '12345',
 });
 
 var demo1 = ci.project('demo1', {

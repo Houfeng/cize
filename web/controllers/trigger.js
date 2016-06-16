@@ -16,11 +16,18 @@ var TriggerController = nokit.define({
    **/
   index: function () {
     var self = this;
+    if (self.context.param('secret') != self.server.ci.secret) {
+      return self.context.forbidden();
+    }
     self.server.ci.invoke(
       self.context.params.project,
-      self.context.params.job
+      self.context.params.job,
+      self.context.request.body || self.context.request.query
     );
-    self.context.send({});
+    self.context.send({
+      status: 'ok',
+      time: new Date()
+    });
   }
 
 });
