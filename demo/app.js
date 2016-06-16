@@ -16,7 +16,7 @@ demo1.job('pull', ci.series(function (done) {
 }, ci.shell(function () {
   /*
   echo $PWD
-  ls
+  lss
   */
 })));
 

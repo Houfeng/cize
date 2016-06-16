@@ -49,3 +49,7 @@ body {
 .navbar-brand {
   padding: 8px;
 }
+
+.list-group-item-heading {
+  font-size: 16px;
+}
