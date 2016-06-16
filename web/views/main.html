@@ -9,7 +9,10 @@
 <% $.placeBegin("content") %>
 <div class="row dashboard">
   <div class="col-md-2 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase"><%= $.locale.projects() %></div>
+    <div class="panel-heading text-uppercase">
+      <i class="fa fa-archive" aria-hidden="true"></i>
+      <%= $.locale.projects() %>
+    </div>
     <div class="list-group">
       <% $.each(this.projects,function(name, project){ %>
       <a class="list-group-item">
@@ -20,7 +23,10 @@
     </div>
   </div>
   <div class="col-md-3 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase"><%= $.locale.jobs() %></div>
+    <div class="panel-heading text-uppercase">
+      <i class="fa fa-tasks" aria-hidden="true"></i>
+      <%= $.locale.jobs() %>
+    </div>
     <div class="list-group">
       <% $.each(this.jobs,function(name, job){ %>
       <a class="list-group-item">
@@ -31,12 +37,25 @@
     </div>
   </div>
   <div class="col-md-7 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase"><%= $.locale.records() %></div>
+    <div class="panel-heading text-uppercase">
+      <i class="fa fa-history" aria-hidden="true"></i>
+      <%= $.locale.records() %>
+    </div>
     <div class="list-group">
       <% $.each(this.records,function(index, record){ %>
       <a class="list-group-item">
-        <div class="list-group-item-heading">#<%= record.sn %></div>
-        <div class="list-group-item-text"><%= record.name %></div>
+        <h5 class="list-group-item-heading">
+          # <%= record.sn %>
+          <i class="fa fa-spinner fa-spin fa-fw pull-right"></i>
+        </h5>
+        <div class="list-group-item-text" style="padding:5px 0">
+          <%= record.summary || '-' %>
+        </div>
+        <div class="list-group-item-text">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <%= $.formatDate(record.beginTime,'MM-dd hh:mm:ss') %> - 
+          <%= $.formatDate(record.endTime,'MM-dd hh:mm:ss') %>
+        </div>
       </a>
       <% }) %>
     </div>

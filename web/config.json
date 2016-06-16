@@ -14,7 +14,8 @@
   "folders": {
     "public": {
       "^/bootstrap(.*)": "../node_modules/bootstrap/dist",
-      "^/jquery(.*)": "../node_modules/jquery/dist"
+      "^/jquery(.*)": "../node_modules/jquery/dist",
+      "^/font-awesome(.*)": "../node_modules/font-awesome"
     }
   }
 }
