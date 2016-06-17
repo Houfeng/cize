@@ -13,6 +13,7 @@ exports.parallel = require('./lib/parallel');
 exports.cron = require('./lib/cron');
 exports.crontab = require('./lib/cron');
 exports.Store = require('./lib/store');
+exports.pkg = require('./package.json');
 
 Error.prototype.toString = function () {
   return this.message + os.EOL + this.stack;

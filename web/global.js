@@ -7,7 +7,6 @@ var Global = nokit.define({
    * 在 server 启动时
    **/
   onStart: function (server, done) {
-    server.ci.pkg = require('../package.json');
     done();
   },
 
