@@ -7,23 +7,20 @@ ci.init({
 });
 
 var demo1 = ci.project('demo1', {
-  repertory: 'https://github.com/houfeng/cize.git'
+  repertory: 'https://github.com/nokitjs/nokit.git'
 });
 
-demo1.job('pull', ci.series(function (done) {
-  this.console.log('pull1');
-  done();
-}, ci.shell(function () {
+demo1.job('pull', ci.shell(function () {
   /*
-  echo $PWD
-  lss
+  git clone ${project.options.repertory} ./
+  */
+}));
+
+demo1.job('build', ci.on(['pull'], ci.shell(function () {
+  /*
+  npm install --registry=http://npm.jd.com
+  npm test
   */
 })));
-
-demo1.job('build', ci.on(['pull'], function (done) {
-  this.console.log('build');
-  console.log('build');
-  done();
-}));
 
 ci.start();

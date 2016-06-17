@@ -47,9 +47,9 @@
         <h4 class="list-group-item-heading">
           # <%= record.sn %> 
           <% if(record.status == 300){ %>
-          <i class="fa fa-meh-o pull-right" aria-hidden="true" style="color:brown;"></i>
+          <i class="fa fa-times-circle pull-right" aria-hidden="true"></i>
           <% } else if(record.status == 200){ %>
-          <i class="fa fa-smile-o pull-right" aria-hidden="true" style="color:green;"></i>
+          <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
           <% } else { %>
           <i class="fa fa-spinner fa-spin fa-fw pull-right" aria-hidden="true"></i>
           <% } %>
