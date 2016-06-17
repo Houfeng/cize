@@ -4,9 +4,9 @@
   "records": "Records",
   "dashborad": "Dashborad",
   "auth": "Authentication",
-  "logout": "Logout",
+  "exit": "Exit",
   "secret": "Secret",
   "home": "Home",
-  "document": "Document",
+  "document": "Docs",
   "confirm": "Confirm"
 }
