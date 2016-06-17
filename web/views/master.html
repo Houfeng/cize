@@ -24,6 +24,7 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/pjax/pjax.min.css" />
   <link rel="stylesheet" href="/css/common.css" />
   <% $.placeHolder('head') %>
 </head>
@@ -45,6 +46,10 @@
   </div>
   <script src="/jquery/jquery.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/pjax/pjax.min.js"></script>
+  <script>
+    pjax.progress.configure({ showSpinner: false });
+  </script>
   <% $.placeHolder('foot') %>
 </body>
 

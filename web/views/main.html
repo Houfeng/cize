@@ -13,9 +13,9 @@
       <i class="fa fa-archive" aria-hidden="true"></i>
       <%= $.locale.projects() %>
     </div>
-    <div class="list-group">
+    <div class="list-group" id="project-list">
       <% $.each(this.projects,function(name, project){ %>
-      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/<%= name %>">
+      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/<%= name %>" data-pjax-container="#project-list,#job-list,#record-list">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
@@ -27,9 +27,9 @@
       <i class="fa fa-tasks" aria-hidden="true"></i>
       <%= $.locale.jobs() %>
     </div>
-    <div class="list-group">
+    <div class="list-group" id="job-list">
       <% $.each(this.jobs,function(name, job){ %>
-      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/<%= this.projectName %>/<%= name %>">
+      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/<%= this.projectName %>/<%= name %>" data-pjax-container="#job-list,#record-list">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
@@ -41,9 +41,9 @@
       <i class="fa fa-history" aria-hidden="true"></i>
       <%= $.locale.records() %>
     </div>
-    <div class="list-group">
+    <div class="list-group" id="record-list">
       <% $.each(this.records,function(index, record){ %>
-      <a class="list-group-item">
+      <a class="list-group-item" data-pjax-container="#record-list">
         <h4 class="list-group-item-heading">
           # <%= record.sn %> 
           <% if(record.status == 300){ %>
