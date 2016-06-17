@@ -1,7 +1,7 @@
 {
-  "name": "nokit-app",
+  "name": "cize-web",
   "version": "1.0.0",
-  "description": "this is an example app",
+  "description": "cize-web",
   "main": "./app.js",
   "keywords": [
     "nokitjs",
@@ -9,8 +9,8 @@
     "mvc"
   ],
   "author": {
-    "name": "author",
-    "email": "author@domain.com"
+    "name": "Houfeng",
+    "email": "admin@xhou.net"
   },
   "homepage": "http://nokit.org",
   "license": "MIT",

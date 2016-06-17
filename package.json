@@ -11,8 +11,12 @@
     "cover": "istanbul cover _mocha"
   },
   "keywords": [
-    "CI",
-    "Continuous integration"
+    "ci",
+    "continuous integration",
+    "jenkins",
+    "travis",
+    "test",
+    "build"
   ],
   "author": "Houfeng",
   "repository": {
