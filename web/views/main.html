@@ -42,7 +42,7 @@
       <%= $.locale.records() %>
     </div>
     <div class="list-group" id="record-list">
-      <% $.include('./record.html') %>
+      <% $.include(this.sn?'./term.html':'./record.html') %>
     </div>
   </div>
 </div>

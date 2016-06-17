@@ -32,7 +32,7 @@
     "mkdir-p": "0.0.7",
     "nedb": "^1.8.0",
     "nokit-pjax": "^0.1.9",
-    "nokitjs": "^1.24.2",
+    "nokitjs": "^1.24.3",
     "real-utils": "0.0.1",
     "shify": "0.0.7"
   },

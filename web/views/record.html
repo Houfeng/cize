@@ -1,5 +1,5 @@
 <% $.each(this.records,function(index, record){ %>
-<a class="list-group-item" data-pjax-container="#record-list">
+<a class="list-group-item" data-pjax-container="#record-list" href="/<%= this.projectName %>/<%= this.jobName %>/<%= record.sn %>">
   <h4 class="list-group-item-heading">
     # <%= record.sn %> 
     <% if(record.status == 300){ %>
