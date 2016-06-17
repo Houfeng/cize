@@ -66,3 +66,14 @@ body {
   width: 500px;
   margin: 100px auto;
 }
+
+.navbar-header {
+  position: relative;
+}
+
+.version {
+  position: absolute;
+  bottom: 16px;
+  left: 82px;
+  color: #aaa;
+}
