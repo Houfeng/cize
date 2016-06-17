@@ -2,5 +2,11 @@
   "projects": "项目",
   "jobs": "任务",
   "records": "记录",
-  "dashborad": "仪表盘"
+  "dashborad": "仪表盘",
+  "auth": "认证",
+  "logout": "退出",
+  "secret": "密钥",
+  "home": "主页",
+  "document": "文档",
+  "confirm": "确认"
 }

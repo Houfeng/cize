@@ -3,15 +3,20 @@
     "^/": "$./handlers/mvc"
   },
   "filters": {
-    "^/": "../node_modules/nokit-pjax"
+    "^/": "../node_modules/nokit-pjax",
+    "^/:auth": "./filters/auth"
   },
   "mvc": {
     "routes": {
+      "/auth": {
+        "target": "./auth",
+        "ignoreAuth": true
+      },
       "/": "./main",
-      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": "./trigger",
-      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
-      "/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
-      "/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main"
+      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": "./trigger",
+      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
+      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
+      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main"
     }
   },
   "folders": {
@@ -21,5 +26,8 @@
       "^/font-awesome(.*)": "../node_modules/font-awesome",
       "^/pjax/(.*)$": "../node_modules/nokit-pjax/client"
     }
+  },
+  "session": {
+    "timeout": 7200
   }
 }

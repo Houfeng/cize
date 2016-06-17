@@ -2,5 +2,11 @@
   "projects": "Projects",
   "jobs": "Jobs",
   "records": "Records",
-  "dashborad": "Dashborad"
+  "dashborad": "Dashborad",
+  "auth": "Authentication",
+  "logout": "Logout",
+  "secret": "Secret",
+  "home": "Home",
+  "document": "Document",
+  "confirm": "Confirm"
 }

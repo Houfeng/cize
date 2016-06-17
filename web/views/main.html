@@ -15,7 +15,7 @@
     </div>
     <div class="list-group" id="project-list">
       <% $.each(this.projects,function(name, project){ %>
-      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/<%= name %>" data-pjax-container="#project-list,#job-list,#record-list">
+      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/p/<%= name %>" data-pjax-container="#project-list,#job-list,#record-list">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
@@ -29,7 +29,7 @@
     </div>
     <div class="list-group" id="job-list">
       <% $.each(this.jobs,function(name, job){ %>
-      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/<%= this.projectName %>/<%= name %>" data-pjax-container="#job-list,#record-list">
+      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#job-list,#record-list">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
