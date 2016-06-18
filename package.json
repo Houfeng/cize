@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -38,7 +38,7 @@
     "mkdir-p": "0.0.7",
     "nedb": "^1.8.0",
     "nokit-pjax": "^0.1.9",
-    "nokitjs": "^1.24.3",
+    "nokitjs": "^1.24.4",
     "real-utils": "0.0.1",
     "shify": "0.0.7"
   },
