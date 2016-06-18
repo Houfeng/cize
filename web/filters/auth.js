@@ -1,23 +1,26 @@
 /**
  * AuthFilter
  **/
-var AuthFilter = nokit.define({
+const AuthFilter = nokit.define({
 
   /**
    * 在处理 MVC 请求时
    **/
   onMvcHandle: function (context, next) {
-    if (!context.server.ci.secret) {
+    var ci = context.server.ci;
+    context.tokenKey = `${ci.pkg.name}-${ci.id}`;
+    if (context.route.ignoreAuth || !ci.secret) {
       return next();
     }
-    context.session.get('user', function (user) {
-      if (!context.route.ignoreAuth && !user) {
-        return context.redirect('/auth');
-      } else {
-        context.user = user;
-        next();
-      }
-    });
+    var payload = ci.decode(context.cookie.get(context.tokenKey));
+    if (payload &&
+      payload.ip == context.request.clientInfo.ip &&
+      payload.expires > Date.now()) {
+      context.user = payload;
+      next();
+    } else {
+      return context.redirect('/auth');
+    }
   }
 
 });

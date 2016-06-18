@@ -14,19 +14,19 @@
 
 /* global __dirname */
 
-var nokit = require("nokitjs");
+const nokit = require("nokitjs");
 
 /**
  * 创建 server 实例
  **/
-var server = new nokit.Server({
+const server = new nokit.Server({
   "root": __dirname
 });
 
 /**
  * 启动 server
  **/
-server.start(function(err, msg) {
+server.start(function (err, msg) {
   if (err) {
     console.error(err);
   } else {

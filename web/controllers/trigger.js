@@ -1,7 +1,7 @@
 /**
  * TriggerController
  **/
-var TriggerController = nokit.define({
+const TriggerController = nokit.define({
 
   /**
    * 初始化方法，每次请求都会先执行 init 方法

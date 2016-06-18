@@ -1,7 +1,7 @@
 /**
  * 全局应用程序类
  **/
-var Global = nokit.define({
+const Global = nokit.define({
 
   /**
    * 在 server 启动时

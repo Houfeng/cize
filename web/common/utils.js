@@ -1,4 +1,4 @@
-var utils = nokit.utils;
+const utils = nokit.utils;
 utils.pkg = require('../../package.json');
 
 module.exports = utils; 

@@ -1,7 +1,9 @@
+const TOKEN_MAX_AGE = 60 * 60 * 24;
+
 /**
  * AuthController
  **/
-var AuthController = nokit.define({
+const AuthController = nokit.define({
 
   /**
    * 初始化方法，每次请求都会先执行 init 方法
@@ -25,13 +27,18 @@ var AuthController = nokit.define({
   login: function () {
     var self = this;
     if (self.context.form.secret == self.server.ci.secret) {
-      self.context.session.set('user',
-        self.context.form.secret,
-        function () {
-          self.context.redirect('/');
-        });
+      var expires = Date.now() + (TOKEN_MAX_AGE * 1000);
+      var token = self.server.ci.encode({
+        ip: self.context.request.clientInfo.ip,
+        expires: expires
+      });
+      self.context.cookie.set(self.context.tokenKey, token, {
+        "expires": new Date(expires),
+        "Max-Age": TOKEN_MAX_AGE
+      });
+      self.context.redirect('/');
     } else {
-      self.message = 'xxx';
+      //self.message = 'xxx';
       self.render('auth', self);
     }
   },
@@ -41,10 +48,8 @@ var AuthController = nokit.define({
    **/
   logout: function () {
     var self = this;
-    self.context.session.remove('user',
-      function () {
-        self.context.redirect('/auth');
-      });
+    self.context.cookie.remove(self.context.tokenKey);
+    self.context.redirect('/auth');
   }
 
 });
