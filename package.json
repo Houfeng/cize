@@ -1,6 +1,7 @@
 {
   "name": "cize",
   "version": "0.0.5",
+  "dbVersion": "1",
   "description": "",
   "main": "index.js",
   "bin": {
