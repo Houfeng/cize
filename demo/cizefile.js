@@ -18,7 +18,7 @@ module.exports = function (ci) {
 
   demo1.job('build', ci.on(['pull'], ci.shell(function () {
     /*
-    npm install --registry=http://npm.jd.com
+    npm install
     npm test
     */
   })));

@@ -27,9 +27,7 @@ const MainController = nokit.define({
     self.ci.store.find({
       projectName: self.projectName,
       name: self.jobName
-    }).sort({
-      sn: -1
-    }).limit(100).exec(function (err, records) {
+    }, 100, ['sn', 'Z'], function (err, records) {
       if (err) return self.context.error(err);
       self.records = records;
       self.sn = self.context.params.sn;
