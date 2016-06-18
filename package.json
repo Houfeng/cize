@@ -1,10 +1,10 @@
 {
   "name": "cize",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "bin": {
-    "cix": "./bin/cli.js"
+    "cize": "./bin/cli.js"
   },
   "scripts": {
     "test": "mocha",
@@ -28,6 +28,7 @@
     "async": "^1.5.2",
     "bootstrap": "^3.3.6",
     "cify": "^1.0.0",
+    "cmdline": "0.0.5",
     "cron": "^1.1.0",
     "font-awesome": "^4.6.3",
     "jquery": "^2.2.4",
