@@ -10,15 +10,16 @@ const pkg = ci.pkg;
 const os = require('os');
 
 const CONF_FILE = `${pkg.name}file.js`;
-const CONF_FILE_EXP = new RegExp(CONF_FILE + '$', 'i');
+const FILE_EXP = /\.js$/i;
 
 const cmdline = new CmdLine();
 
 if (cmdline.options.has('-v')) {
   return console.info(`${pkg.name} ${pkg.version}`);
 }
+
 var confPath = path.resolve(process.cwd(), cmdline.args[0] || './');
-if (!CONF_FILE_EXP.test(confPath)) {
+if (!FILE_EXP.test(confPath)) {
   confPath = path.normalize(`${confPath}/${CONF_FILE}`);
 }
 
