@@ -30,7 +30,10 @@
     <div class="list-group" id="job-list">
       <% $.each(this.jobs,function(name, job){ %>
       <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#job-list,#record-list">
-        <h4 class="list-group-item-heading"><%= name %></h4>
+        <h4 class="list-group-item-heading">
+          <%= name %>
+          <i class="fa fa-play-circle-o pull-right" aria-hidden="true"></i>
+        </h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
       <% }.bind(this)) %>
