@@ -26,7 +26,7 @@ const MainController = nokit.define({
     }
     //记录
     self.sn = self.context.params.sn;
-    self.job.getRecord(100, 0, function (err, records) {
+    self.job.getRecords(100, 0, function (err, records) {
       if (err) return self.context.error(err);
       self.records = records;
       self.ready();
