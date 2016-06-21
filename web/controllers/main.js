@@ -8,6 +8,7 @@ const MainController = nokit.define({
    **/
   init: function () {
     var self = this;
+    //CI
     self.ci = self.server.ci;
     //项目
     self.projects = self.ci.projects;
@@ -24,13 +25,10 @@ const MainController = nokit.define({
       return self.context.notFound();
     }
     //记录
-    self.ci.store.find({
-      projectName: self.projectName,
-      name: self.jobName
-    }, 100, ['sn', 'Z'], function (err, records) {
+    self.sn = self.context.params.sn;
+    self.job.getRecord(100, 0, function (err, records) {
       if (err) return self.context.error(err);
       self.records = records;
-      self.sn = self.context.params.sn;
       self.ready();
     });
   },
