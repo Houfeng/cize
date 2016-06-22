@@ -8,5 +8,10 @@
   "secret": "密钥",
   "home": "主页",
   "document": "文档",
-  "confirm": "确认"
+  "confirm": "确认",
+  "console": "控制台",
+  "back": "返回",
+  "trigger": "触发",
+  "cancel": "取消",
+  "json_format": "JSON 格式 ..."
 }

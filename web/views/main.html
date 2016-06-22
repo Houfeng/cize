@@ -8,45 +8,43 @@
 
 <% $.placeBegin("content") %>
 <div class="row dashboard">
-  <div class="col-md-2 panel panel-default dashboard-col">
+  <div class="col-md-2 panel panel-default dashboard-col" id="panel-left">
     <div class="panel-heading text-uppercase">
       <i class="fa fa-archive" aria-hidden="true"></i>
       <%= $.locale.projects() %>
     </div>
-    <div class="list-group" id="project-list">
+    <div class="list-group">
       <% $.each(this.projects,function(name, project){ %>
-      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/p/<%= name %>" data-pjax-container="#project-list,#job-list,#record-list">
+      <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/p/<%= name %>" data-pjax-container="#panel-left,#panel-center,#panel-right">
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
       <% }.bind(this)) %>
     </div>
   </div>
-  <div class="col-md-3 panel panel-default dashboard-col">
+  <div class="col-md-3 panel panel-default dashboard-col" id="panel-center">
     <div class="panel-heading text-uppercase">
       <i class="fa fa-tasks" aria-hidden="true"></i>
       <%= $.locale.jobs() %>
     </div>
-    <div class="list-group" id="job-list">
+    <div class="list-group">
       <% $.each(this.jobs,function(name, job){ %>
-      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#job-list,#record-list">
+      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#panel-center,#panel-right">
         <h4 class="list-group-item-heading">
           <%= name %>
-          <i class="fa fa-play-circle-o pull-right" aria-hidden="true"></i>
         </h4>
         <div class="list-group-item-text">Build: #105</div>
       </a>
       <% }.bind(this)) %>
     </div>
   </div>
-  <div class="col-md-7 panel panel-default dashboard-col">
-    <div class="panel-heading text-uppercase">
-      <i class="fa fa-history" aria-hidden="true"></i>
-      <%= $.locale.records() %>
-    </div>
-    <div class="list-group" id="record-list">
-      <% $.include(this.sn?'./term.html':'./record.html') %>
-    </div>
+  <div class="col-md-7 panel panel-default dashboard-col" id="panel-right">
+      <% $.include(this.sn?'./console.html':'./record.html') %>
   </div>
 </div>
+<% $.include('./trigger.html') %>
+<% $.placeEnd() %>
+
+<% $.placeBegin('foot') %>
+<script src="/js/main.js"></script>
 <% $.placeEnd() %>

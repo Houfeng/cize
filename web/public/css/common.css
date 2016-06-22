@@ -58,7 +58,7 @@ body {
   font-size: 16px;
 }
 
-.term {
+.console {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
@@ -76,4 +76,8 @@ body {
   bottom: 16px;
   left: 82px;
   color: #aaa;
+}
+
+.clickable {
+  cursor: pointer;
 }

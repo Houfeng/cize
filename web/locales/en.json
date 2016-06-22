@@ -8,5 +8,10 @@
   "secret": "Secret",
   "home": "Home",
   "document": "Docs",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "console": "Console",
+  "back": "Back",
+  "trigger": "Trigger",
+  "cancel": "Cancel",
+  "json_format": "JSON format ..."
 }

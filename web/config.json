@@ -13,7 +13,10 @@
         "ignoreAuth": true
       },
       "/": "./main",
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": "./trigger",
+      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": {
+        "target": "./trigger",
+        "ignoreAuth": true
+      },
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main"

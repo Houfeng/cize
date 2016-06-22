@@ -39,6 +39,14 @@ const MainController = nokit.define({
   index: function () {
     var self = this;
     self.render("main", self);
+  },
+
+  /**
+   * 触发一个 Job 
+   **/
+  trigger: function () {
+    var self = this;
+    self.render("main", self);
   }
 
 });

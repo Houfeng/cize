@@ -19,6 +19,7 @@ const AuthFilter = nokit.define({
       context.user = payload;
       next();
     } else {
+
       return context.redirect('/auth');
     }
   }
