@@ -8,18 +8,18 @@ const AuthFilter = nokit.define({
    **/
   onMvcHandle: function (context, next) {
     var ci = context.server.ci;
-    context.tokenKey = `${ci.pkg.name}-${ci.id}`;
+    context.tokenKey = `${ci.pkg.name}-token`; //cize-token
     if (context.route.ignoreAuth || !ci.secret) {
       return next();
     }
-    var payload = ci.decode(context.cookie.get(context.tokenKey));
-    if (payload &&
-      payload.ip == context.request.clientInfo.ip &&
-      payload.expires > Date.now()) {
+    var token = context.request.headers[context.tokenKey] ||
+      context.param(context.tokenKey) ||
+      context.cookie.get(context.tokenKey);
+    var payload = ci.verifyToken(token);
+    if (payload && payload.expires > Date.now()) {
       context.user = payload;
       next();
     } else {
-
       return context.redirect('/auth');
     }
   }

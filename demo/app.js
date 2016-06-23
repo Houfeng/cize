@@ -23,7 +23,7 @@ var demo1 = ci.project('demo1', {
 //   */
 // })));
 
-demo1.job('cron', ci.cron('*/1 * * * * *', function (done) {
+demo1.job('cron', ci.cron('*/5 * * * * *', function (done) {
   console.log('test');
   done(0);
 }));

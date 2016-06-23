@@ -16,9 +16,6 @@ const TriggerController = nokit.define({
    **/
   index: function () {
     var self = this;
-    if (self.context.param('secret') != self.server.ci.secret) {
-      return self.context.forbidden();
-    }
     self.server.ci.invoke(
       self.context.params.project,
       self.context.params.job,

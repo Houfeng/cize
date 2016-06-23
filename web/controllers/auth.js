@@ -1,4 +1,4 @@
-const TOKEN_MAX_AGE = 60 * 60 * 24;
+const TOKEN_MAX_AGE = 1000 * 60 * 60 * 12;
 
 /**
  * AuthController
@@ -27,13 +27,8 @@ const AuthController = nokit.define({
   login: function () {
     var self = this;
     if (self.context.form.secret == self.server.ci.secret) {
-      var expires = Date.now() + (TOKEN_MAX_AGE * 1000);
-      var token = self.server.ci.encode({
-        ip: self.context.request.clientInfo.ip,
-        expires: expires
-      });
+      var token = self.server.ci.createToken(TOKEN_MAX_AGE);
       self.context.cookie.set(self.context.tokenKey, token, {
-        "expires": new Date(expires),
         "Max-Age": TOKEN_MAX_AGE
       });
       self.context.redirect('/');
