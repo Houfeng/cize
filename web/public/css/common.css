@@ -13,6 +13,10 @@ body {
   background-color: #fefefe;
 }
 
+.panel-default>.panel-heading a {
+  color: #333;
+}
+
 .dashboard, .dashboard-col {
   height: 100%;
   padding: 0;
