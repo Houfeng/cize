@@ -30,7 +30,7 @@ if (!fs.existsSync(confPath)) {
 
 if (cluster.isMaster) {
 
-  var workerNum = Number(cmdline.options.has('-w') || os.cpus().length);
+  var workerNum = Number(cmdline.options.getValue('-w') || os.cpus().length);
   for (var i = 0; i < workerNum; i++) {
     cluster.fork();
   }

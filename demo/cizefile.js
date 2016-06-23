@@ -11,15 +11,16 @@ module.exports = function (ci) {
 
   demo1.job('pull', ci.shell(function () {
     /*
-    git clone ${project.options.repertory} ./
+    echo pull
     */
   }));
 
-  demo1.job('build', ci.on(['pull'], ci.shell(function () {
+  demo1.job('build', ci.by(['pull'], ci.shell(function () {
     /*
-    npm install
-    npm test
+    echo build
     */
   })));
+
+  demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
 
 };
