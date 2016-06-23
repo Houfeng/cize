@@ -1,7 +1,6 @@
 module.exports = function (ci) {
 
   ci.init({
-    workspace: '/Users/Houfeng/Desktop/cize-root',
     port: 8090,
     secret: '12345',
   });

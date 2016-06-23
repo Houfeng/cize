@@ -3,3 +3,5 @@ node_modules
 .vscode
 coverage
 jsconfig.json
+demo/data
+demo/works
