@@ -1,10 +1,10 @@
 <div class="panel-heading text-uppercase">
   <i class="fa fa-terminal" aria-hidden="true"></i>
   <%= $.locale.console() %>
-  <span class="pull-right clickable">
+  <a class="pull-right" data-pjax-container="#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>">
   <i class="fa fa-reply" aria-hidden="true" id="btn-back"></i>
   <%= $.locale.back() %>
-  </span>
+  </a>
 </div>
 <div class="panel-body">
   
