@@ -13,5 +13,6 @@
   "back": "Back",
   "trigger": "Trigger",
   "cancel": "Cancel",
-  "json_format": "JSON format ..."
+  "json_format": "JSON format ...",
+  "token": "Token"
 }

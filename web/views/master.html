@@ -35,6 +35,9 @@
       <div class="navbar-header">
         <img class="navbar-brand" src="/images/logo.png">
         <sub class="version"><%= $.server.ci.pkg.version %></sub>
+        <a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right text-uppercase">
@@ -51,6 +54,12 @@
             </a>
           </li>
           <% if($.context.user){ %>
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-key" aria-hidden="true"></i>
+              <%= $.locale.token() %>
+            </a>
+          </li>
           <li>
             <a href="/auth/logout">
               <i class="fa fa-sign-out" aria-hidden="true"></i>

@@ -13,5 +13,6 @@
   "back": "返回",
   "trigger": "触发",
   "cancel": "取消",
-  "json_format": "JSON 格式 ..."
+  "json_format": "JSON 格式 ...",
+  "token": "密钥"
 }

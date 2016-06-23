@@ -67,7 +67,7 @@ body {
 }
 
 .panel-auth {
-  width: 500px;
+  max-width: 500px;
   margin: 100px auto;
 }
 
@@ -84,4 +84,23 @@ body {
 
 .clickable {
   cursor: pointer;
+}
+
+.navbar-toggle {
+  padding: 5px 10px;
+}
+
+@media (max-width: 990px) {
+  .dashboard-col {
+    height: auto;
+  }
+  .panel-auth {
+    margin: 100px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .version {
+    left: 100px;
+  }
 }
