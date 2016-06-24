@@ -1,1 +1,1 @@
-Use CIZE, like gulp, for continuous integration.
+Cize 是一个「持续集成」工具，
