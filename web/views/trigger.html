@@ -1,4 +1,4 @@
-<form method="POST" action="<%= $.route.actionUrl('trigger') %>" id="form-trigger" class="modal fade">
+<div id="form-trigger" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,11 +12,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal"><%= $.locale.cancel() %></button>
-        <button type="submit" class="btn btn-primary text-uppercase"><%= $.locale.confirm() %></button>
+        <button type="button" class="btn btn-primary text-uppercase" data-dismiss="modal"><%= $.locale.confirm() %></button>
       </div>
     </div>
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
-</form>
+</div>
 <!-- /.modal -->

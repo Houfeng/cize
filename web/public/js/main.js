@@ -1,6 +1,5 @@
 (function ($) {
 
-  var url = location.href.split('?')[0];
   var interval = 2500;
 
   function _fetchOut() {
@@ -9,6 +8,7 @@
     if (!console || console.length < 1 || !spinner || spinner.length < 1) {
       return fetchOut();
     }
+    var url = location.href.split('?')[0];
     $.get(url + '/console?_t=' + Date.now(), function (data) {
       if (console.text() != data) {
         console.text(data);
