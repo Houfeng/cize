@@ -66,9 +66,14 @@ body {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
-.panel-auth {
+.panel-auth,
+.panel-alert {
   max-width: 500px;
   margin: 100px auto;
+}
+
+.panel-alert .panel-body{
+  text-align: center;
 }
 
 .navbar-header {

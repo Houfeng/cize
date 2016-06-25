@@ -13,6 +13,9 @@ const MainController = nokit.define({
     //项目
     self.projects = self.ci.projects;
     self.projectName = self.context.params.project || Object.getOwnPropertyNames(self.projects)[0];
+    if (!self.projectName) {
+      return self.render('alert');
+    }
     self.project = self.ci.project(self.projectName);
     if (!self.project) {
       return self.context.notFound();
@@ -20,6 +23,9 @@ const MainController = nokit.define({
     //job
     self.jobs = self.project.jobs;
     self.jobName = self.context.params.job || Object.getOwnPropertyNames(self.jobs)[0];
+    if (!self.jobName) {
+      return self.render('alert');
+    }
     self.job = self.project.job(self.jobName);
     if (!self.job) {
       return self.context.notFound();
