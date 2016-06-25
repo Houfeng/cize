@@ -77,7 +77,24 @@ body {
   color: #333;
   border-radius: 0;
   border: none;
-  border-top: solid 1px #e5e5e5;
+}
+
+.console-wraper .current-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.console-wraper .current-info, .console-wraper .current-info .list-group-item {
+  border: none;
+  cursor: default;
+  background: #f3f3f3;
+}
+
+.console-wraper .current-info .list-group-item {
+  border-bottom: solid 1px #e9e9e9;
 }
 
 .console-wraper .console, .console-wraper .console * {

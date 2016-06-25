@@ -26,6 +26,7 @@ demo1.job('build', ci.by(['pull'], ci.shell(function () {
 demo1.job('test', ci.shell(function () {
   /*
   nokit test
+  ping baidu.com
   */
 }));
 
@@ -41,4 +42,4 @@ ci.start();
 
 // throw 0
 
-process.exit(0);
+// process.exit(0);
