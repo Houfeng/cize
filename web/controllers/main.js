@@ -16,16 +16,15 @@ const MainController = nokit.define({
     async.series([
       self._loadProjects.bind(self),
       self._loadJobs.bind(self),
-      self._loadRecords.bind(self)
-    ], function (err) {
-      if (err) return self.context.error(err);
-      self.sn = self.context.params.sn;
-      if (self.sn) {
-        self._loadOneRecord(self.sn, self.ready.bind(self));
-      } else {
-        self.ready();
+      function (done) {
+        self.sn = self.context.params.sn;
+        if (self.sn) {
+          self._loadOneRecord(self.sn, done);
+        } else {
+          self._loadRecords(done);
+        }
       }
-    });
+    ], self.ready.bind(self));
   },
 
   /**
@@ -99,16 +98,18 @@ const MainController = nokit.define({
    * 默认 action
    **/
   index: function () {
-    var self = this;
-    self.render("main", self);
+    this.render("main", this);
   },
 
   /**
-   * 触发一个 Job 
+   * 显示控制台输出
    **/
-  trigger: function () {
-    var self = this;
-    self.render("main", self);
+  console: function () {
+    if (this.record) {
+      this.context.text(this.record.out, 'text/plain');
+    } else {
+      this.context.notFound();
+    }
   }
 
 });
