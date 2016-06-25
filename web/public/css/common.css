@@ -42,7 +42,7 @@ body {
   border-left: 0;
 }
 
-.dashboard .list-group {
+.dashboard .list-group, .dashboard .console-wraper {
   border-radius: 0;
   height: 100%;
   overflow: auto;
@@ -62,17 +62,34 @@ body {
   font-size: 16px;
 }
 
-.console {
+.console-wraper {
+  position: relative;
+  padding: 89px 0 0 0;
+  margin: 0;
+}
+
+.console-wraper .console {
+  margin: 0;
+  background: #fff;
+  height: 100%;
+  overflow: auto;
+  padding: 8px;
+  color: #333;
+  border-radius: 0;
+  border: none;
+  border-top: solid 1px #e5e5e5;
+}
+
+.console-wraper .console, .console-wraper .console * {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
-.panel-auth,
-.panel-alert {
+.panel-auth, .panel-alert {
   max-width: 500px;
   margin: 100px auto;
 }
 
-.panel-alert .panel-body{
+.panel-alert .panel-body {
   text-align: center;
 }
 
