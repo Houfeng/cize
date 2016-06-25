@@ -1,6 +1,6 @@
 var ci = require('../');
 
-ci.init({
+ci.config({
   workspace: __dirname,
   port: 8090,
   secret: '12345',
@@ -23,6 +23,22 @@ demo1.job('build', ci.by(['pull'], ci.shell(function () {
   */
 })));
 
+demo1.job('test', ci.shell(function () {
+  /*
+  nokit test
+  */
+}));
+
 //demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
 
 ci.start();
+
+// var exitHook = require('exit-hook');
+ 
+// exitHook(function () {
+// 	console.log('exiting',process.pid);
+// });
+
+// throw 0
+
+process.exit(0);

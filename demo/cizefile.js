@@ -1,6 +1,6 @@
 module.exports = function (ci) {
 
-  ci.init({
+  ci.config({
     port: 8090,
     secret: '12345',
   });
