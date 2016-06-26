@@ -29,7 +29,7 @@
     </div>
     <div class="list-group">
       <% $.each(this.jobs,function(name, job){ %>
-      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#panel-center,#panel-right">
+      <a class="list-group-item <%= name==this.jobName?'active':'' %>" href="/p/<%= this.projectName %>/<%= name %>" data-pjax-container="#panel-left,#panel-center,#panel-right">
         <h4 class="list-group-item-heading">
           <%= name %>
         </h4>

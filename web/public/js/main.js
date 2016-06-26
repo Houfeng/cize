@@ -3,13 +3,20 @@
  **/
 (function ($) {
 
-  var interval = 2500;
+  var LONG_INTERVAL = 7500;
+  var SHORT_INTERVAL = 2500;
 
-  function _fetchOut() {
+  function _fetchOut(interval) {
     var console = $('.console');
     var spinner = $('.fa-spinner');
-    if (!console || console.length < 1 || !spinner || spinner.length < 1) {
-      return fetchOut();
+    var inConsole = console && console.length > 0;
+    var isRuning = spinner && spinner.length > 0;
+    if (!inConsole) {
+      $('#panel-center .list-group .list-group-item.active').click();
+      return fetchOut(LONG_INTERVAL);
+    }
+    if (!isRuning) {
+      return fetchOut(LONG_INTERVAL);
     }
     var url = location.href.split('?')[0];
     $.get(url + '/console?_t=' + Date.now(), function (data) {
@@ -17,13 +24,13 @@
         console.text(data);
         console.prop('scrollTop', console.prop('scrollHeight'));
       }
-      return fetchOut();
+      return fetchOut(SHORT_INTERVAL);
     });
   }
-  function fetchOut() {
+  function fetchOut(interval) {
     return setTimeout(_fetchOut, interval);
   }
-  fetchOut();
+  fetchOut(SHORT_INTERVAL);
 
 })(jQuery);
 

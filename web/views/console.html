@@ -1,7 +1,7 @@
 <div class="panel-heading text-uppercase">
   <i class="fa fa-terminal" aria-hidden="true"></i>
   <%= $.locale.console() %>
-  <a class="pull-right" data-pjax-container="#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>">
+  <a class="pull-right" data-pjax-container="#panel-left,#panel-center,#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>">
   <i class="fa fa-reply" aria-hidden="true" id="btn-back"></i>
   <%= $.locale.back() %>
   </a>

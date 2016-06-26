@@ -8,7 +8,7 @@
 </div>
 <div class="list-group">
   <% $.each(this.records,function(index, record){ %>
-  <a class="list-group-item" data-pjax-container="#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>/<%= record.sn %>">
+  <a class="list-group-item" data-pjax-container="#panel-left,#panel-center,#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>/<%= record.sn %>">
     <h4 class="list-group-item-heading">
       # <%= record.sn %> 
       <% if(record.status == 300){ %>
