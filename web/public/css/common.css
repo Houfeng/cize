@@ -143,3 +143,7 @@ body {
     left: 100px;
   }
 }
+
+#form-trigger .params.danger {
+  border: solid 1px #a94442;
+}

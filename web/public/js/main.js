@@ -1,3 +1,6 @@
+/**
+ * 定时刷新控制台输出
+ **/
 (function ($) {
 
   var interval = 2500;
@@ -21,5 +24,38 @@
     return setTimeout(_fetchOut, interval);
   }
   fetchOut();
+
+})(jQuery);
+
+/**
+ * 手动触发
+ **/
+(function ($) {
+
+  var triggerDialog = $('#form-trigger');
+  var confirmButton = $('#form-trigger .btn-primary');
+  var paramsInput = $('#form-trigger .params');
+
+  paramsInput.on('input', function (event) {
+    paramsInput.removeClass('danger');
+    paramsInput.attr('title', '');
+    confirmButton.attr('title', '');
+  });
+
+  confirmButton.on('click', function (event) {
+    var params = paramsInput.val() || '{}';
+    try {
+      params = JSON.parse(params);
+    } catch (err) {
+      paramsInput.attr('title', err.message);
+      confirmButton.attr('title', err.message);
+      return paramsInput.addClass('danger');
+    }
+    var url = location.href.split('?')[0];
+    $.post(url + '/trigger?_t=' + Date.now(), params, function (res) {
+      $('#panel-center .list-group .list-group-item.active').click();
+      triggerDialog.modal('hide');
+    });
+  });
 
 })(jQuery);
