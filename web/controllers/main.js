@@ -110,6 +110,13 @@ const MainController = nokit.define({
     } else {
       this.context.notFound();
     }
+  },
+
+  /**
+   * 重新运行一个 job
+   **/
+  rerun: function () {
+    
   }
 
 });

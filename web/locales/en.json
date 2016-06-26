@@ -2,7 +2,7 @@
   "projects": "Projects",
   "jobs": "Jobs",
   "records": "Records",
-  "dashborad": "Dashborad",
+  "monitor": "Monitor",
   "auth": "Authentication",
   "exit": "Exit",
   "secret": "Secret",
@@ -16,5 +16,6 @@
   "json_format": "JSON format ...",
   "token": "Token",
   "alert": "Alert",
-  "noProjectsOrJobs": "No projects or jobs"
+  "noProjectsOrJobs": "No projects or jobs",
+  "rerun": "Rerun"
 }
