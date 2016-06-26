@@ -83,8 +83,8 @@ const MainController = nokit.define({
     self.job.getRecord(sn, function (err, record) {
       if (err) return callback(err);
       if (!record) return self.context.notFound();
-      var contextPaths = self.ci.getContextPaths(record.contextId);
-      var outFile = path.normalize(`${contextPaths.out}/${record._id}.txt`);
+      var paths = self.ci.getContextPaths(record.contextId);
+      var outFile = path.normalize(`${paths.out}/${record._id}.txt`);
       fs.readFile(outFile, function (err, data) {
         if (err) return callback(err);
         record.out = data.toString();
@@ -116,7 +116,20 @@ const MainController = nokit.define({
    * 重新运行一个 job
    **/
   rerun: function () {
-    
+    var self = this;
+    var paths = self.ci.getContextPaths(self.record.contextId);
+    fs.readFile(paths.params, function (err, data) {
+      if (err) self.context.error(err);
+      self.server.ci.invoke(
+        self.record.projectName,
+        self.record.name,
+        JSON.parse((data || '{}').toString())
+      );
+      self.context.send({
+        status: 'ok',
+        time: new Date()
+      });
+    });
   }
 
 });

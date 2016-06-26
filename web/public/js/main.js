@@ -59,3 +59,16 @@
   });
 
 })(jQuery);
+
+/**
+ * 重新运行
+ **/
+(function ($) {
+  $(document).on('click', '[data-rerun]', function (event) {
+    var url = $(this).attr('data-rerun');
+    $.post(url + '?_t=' + Date.now(), function (res) {
+      $('#panel-center .list-group .list-group-item.active').click();
+    });
+    return false;
+  });
+})(jQuery);

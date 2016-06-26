@@ -2,7 +2,7 @@
   <i class="fa fa-history" aria-hidden="true"></i>
   <%= $.locale.records() %>
   <a class="pull-right clickable" data-toggle="modal" data-target="#form-trigger">
-  <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+  <i class="fa fa-crosshairs" aria-hidden="true"></i>
   <%= $.locale.trigger() %>
   </a>
 </div>
@@ -12,7 +12,8 @@
     <h4 class="list-group-item-heading">
       # <%= record.sn %> 
       <% if(record.status == 300){ %>
-      <i class="fa fa-times-circle pull-right" aria-hidden="true"></i>
+      <i class="fa fa-exclamation-circle pull-right" aria-hidden="true"></i>
+      <i class="fa fa-play-circle pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<%= $.locale.rerun() %>" data-rerun="/p/<%= this.projectName %>/<%= this.jobName %>/<%= record.sn %>/rerun"></i>
       <% } else if(record.status == 200){ %>
       <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
       <% } else { %>

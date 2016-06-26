@@ -6,6 +6,7 @@ html, body, .container-main {
 
 * {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -60,6 +61,16 @@ body {
 
 .list-group-item-heading {
   font-size: 16px;
+}
+
+.list-group-item-heading .fa {
+  margin: 0 0 0 12px;
+  color: #888;
+}
+
+.list-group-item-text {
+  font-size: 12px;
+  color: #888;
 }
 
 .console-wraper {
