@@ -59,9 +59,16 @@
       return paramsInput.addClass('danger');
     }
     var url = location.href.split('?')[0];
-    $.post(url + '/trigger?_t=' + Date.now(), params, function (res) {
-      $('#panel-center .list-group .list-group-item.active').click();
-      triggerDialog.modal('hide');
+    $.ajax({
+      url: url + '/trigger?_t=' + Date.now(),
+      type: 'POST',
+      contentType: "application/json",
+      dataType: 'json',
+      data: JSON.stringify(params),
+      success: function (res) {
+        $('#panel-center .list-group .list-group-item.active').click();
+        triggerDialog.modal('hide');
+      }
     });
   });
 
