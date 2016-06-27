@@ -155,6 +155,18 @@ body {
   }
 }
 
-#form-trigger .params.danger {
-  border: solid 1px #a94442;
+input.danger, textarea.danger {
+  border-color: #a94442 !important;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.well {
+  word-break: break-all;
 }

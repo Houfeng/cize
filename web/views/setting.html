@@ -1,0 +1,29 @@
+<div id="setting" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-uppercase">
+          <%= $.locale.setting() %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group form-row">
+          <input type="number" class="form-control max-age" placeholder="<%= $.locale.token_max_age() %>"/>
+          <span class="input-group-btn">
+            <button class="btn btn-default text-uppercase generate" type="button"><%= $.locale.generate_token() %></button>
+          </span>
+        </div>
+        <div class="form-row">
+          <div class="well token">...</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal"><%= $.locale.close() %></button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

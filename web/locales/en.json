@@ -13,9 +13,13 @@
   "back": "Back",
   "trigger": "Trigger",
   "cancel": "Cancel",
+  "close": "Close",
   "json_format": "JSON format ...",
   "token": "Token",
   "alert": "Alert",
   "noProjectsOrJobs": "No projects or jobs",
-  "rerun": "Rerun"
+  "rerun": "Rerun",
+  "setting": "Setting",
+  "generate_token": "Generate token",
+  "token_max_age": "Token max age (day)"
 }

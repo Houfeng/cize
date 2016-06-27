@@ -12,11 +12,11 @@
         "target": "./auth",
         "ignoreAuth": true
       },
-      "/": "./main",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": {
-        "target": "./trigger",
-        "ignoreAuth": true
+        "target": "./trigger"
       },
+      "/setting": "./setting",
+      "/": "./main",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}/console": "./main console",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
       "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",

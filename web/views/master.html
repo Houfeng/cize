@@ -55,9 +55,9 @@
           </li>
           <% if($.context.user){ %>
           <li>
-            <a href="javascript:;">
-              <i class="fa fa-key" aria-hidden="true"></i>
-              <%= $.locale.token() %>
+            <a class="clickable" data-toggle="modal" data-target="#setting">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              <%= $.locale.setting() %>
             </a>
           </li>
           <li>

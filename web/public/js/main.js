@@ -39,9 +39,9 @@
  **/
 (function ($) {
 
-  var triggerDialog = $('#form-trigger');
-  var confirmButton = $('#form-trigger .btn-primary');
-  var paramsInput = $('#form-trigger .params');
+  var triggerDialog = $('#trigger');
+  var confirmButton = $('#trigger .btn-primary');
+  var paramsInput = $('#trigger .params');
 
   paramsInput.on('input', function (event) {
     paramsInput.removeClass('danger');
@@ -78,4 +78,35 @@
     });
     return false;
   });
+})(jQuery);
+
+/**
+ * 生成一个新的 token
+ **/
+(function ($) {
+  var generteButton = $('#setting .generate');
+  var maxAgeInput = $('#setting .max-age');
+  var tokenArea = $('#setting .token');
+
+  maxAgeInput.on('input', function (event) {
+    var val = maxAgeInput.val();
+    if (isNaN(val)) {
+      maxAgeInput.addClass('danger');
+    } else {
+      maxAgeInput.removeClass('danger');
+    }
+  });
+
+  generteButton.on('click', function () {
+    var val = maxAgeInput.val();
+    if (!val || isNaN(val)) {
+      return maxAgeInput.addClass('danger');
+    }
+    $.post('/setting/token', {
+      maxAge: 60 * 60 * Number(val)
+    }, function (token) {
+      tokenArea.text(token);
+    });
+  });
+
 })(jQuery);
