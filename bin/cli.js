@@ -41,7 +41,7 @@ if (cluster.isMaster) {
 
 } else {
 
-  ci.init({
+  ci.config({
     workspace: path.dirname(confPath),
     port: 9000
   });
@@ -52,5 +52,10 @@ if (cluster.isMaster) {
   }
   confFunc(ci);
   ci.start();
+
+  fs.watch(confPath, function () {
+    cluster.worker.disconnect();
+    process.exit(0);
+  });
 
 }

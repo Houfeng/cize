@@ -11,7 +11,7 @@ module.exports = function (ci) {
 
   demo1.job('pull', ci.shell(function () {
     /*
-    echo pull
+    echo pull     
     */
   }));
 

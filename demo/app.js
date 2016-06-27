@@ -35,7 +35,7 @@ demo1.job('test', ci.shell(function () {
 ci.start();
 
 // var exitHook = require('exit-hook');
- 
+
 // exitHook(function () {
 // 	console.log('exiting',process.pid);
 // });
@@ -43,3 +43,4 @@ ci.start();
 // throw 0
 
 // process.exit(0);
+
