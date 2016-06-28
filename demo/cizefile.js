@@ -18,9 +18,10 @@ module.exports = function (ci) {
   demo1.job('build', ci.by(['pull'], ci.shell(function () {
     /*
     echo build
+    ping www.baidu.com
     */
   })));
 
-  demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
+  //demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
 
 };
