@@ -30,6 +30,7 @@ if (!fs.existsSync(confPath)) {
 
 if (cluster.isMaster) {
 
+  console.log('Strarting...');
   var workerNum = Number(cmdline.options.getValue('-w') || os.cpus().length);
   for (var i = 0; i < workerNum; i++) {
     cluster.fork();
