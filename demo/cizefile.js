@@ -5,8 +5,6 @@ module.exports = function (ci) {
     secret: '12345',
   });
 
-  console.log(ci.options.workspace);
-
   var demo1 = ci.project('demo1', {
     repertory: 'https://github.com/nokitjs/nokit.git'
   });
