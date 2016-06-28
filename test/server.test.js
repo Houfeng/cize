@@ -2,9 +2,9 @@ var assert = require('assert');
 var ci = require('../');
 
 describe('server', function () {
-  describe('#init()', function () {
+  describe('#config()', function () {
     it('init by options', function () {
-      ci.init({
+      ci.config({
         workspace: '/test'
       });
       assert.equal(ci.paths.data, '/test/data/');
