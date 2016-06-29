@@ -136,6 +136,10 @@ body {
   cursor: pointer;
 }
 
+.clickable:hover {
+  text-decoration: underline;
+}
+
 .navbar-toggle {
   padding: 5px 10px;
 }

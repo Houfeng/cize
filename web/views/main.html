@@ -17,7 +17,14 @@
       <% $.each(this.projects,function(name, project){ %>
       <a class="list-group-item <%= name==this.projectName?'active':'' %>" href="/p/<%= name %>" data-pjax-container="#panel-left,#panel-center,#panel-right">
         <h4 class="list-group-item-heading"><%= name %></h4>
-        <div class="list-group-item-text">Build: #105</div>
+        <div class="list-group-item-text">
+          <% if(project.lastRecord){ %>
+          <span class="clickable" data-pjax-container="#panel-left,#panel-center,#panel-right" 
+            href="/p/<%= project.lastRecord.projectName %>/<%= project.lastRecord.name %>/<%= project.lastRecord.sn %>">
+            <%= project.lastRecord.name %> #<%= project.lastRecord.sn %>
+          </span>
+          <% } %>
+        </div>
       </a>
       <% }.bind(this)) %>
     </div>
@@ -33,7 +40,14 @@
         <h4 class="list-group-item-heading">
           <%= name %>
         </h4>
-        <div class="list-group-item-text">Build: #105</div>
+        <div class="list-group-item-text">
+          <% if(job.lastRecord){ %>
+          <span class="clickable" data-pjax-container="#panel-left,#panel-center,#panel-right" 
+            href="/p/<%= job.lastRecord.projectName %>/<%= job.lastRecord.name %>/<%= job.lastRecord.sn %>">
+            #<%= job.lastRecord.sn %>
+          </span>
+          <% } %>
+        </div>
       </a>
       <% }.bind(this)) %>
     </div>
