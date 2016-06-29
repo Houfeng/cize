@@ -16,6 +16,7 @@ const MainController = nokit.define({
     async.series([
       self._loadProjects.bind(self),
       self._loadJobs.bind(self),
+      self._loadLastRecordOfProjectsAndJobs.bind(self),
       function (done) {
         self.sn = self.context.params.sn;
         if (self.sn) {
@@ -61,6 +62,23 @@ const MainController = nokit.define({
       return self.context.notFound();
     }
     if (callback) callback();
+  },
+
+  /**
+   * 获取所有项目和当前项目下每个 job 最后一次执行记录
+   **/
+  _loadLastRecordOfProjectsAndJobs: function (callback) {
+    var self = this;
+    var items = self.ci.getProjects().concat(self.project.getJobs());
+    async.parallel(items.map(function (item) {
+      return function (done) {
+        item.getRecords(1, 0, function (err, records) {
+          if (err) return done(err);
+          item.lastRecord = records[0];
+          done();
+        });
+      };
+    }), callback);
   },
 
   /**
