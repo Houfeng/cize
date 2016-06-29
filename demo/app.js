@@ -30,17 +30,6 @@ demo1.job('test', ci.shell(function () {
   */
 }));
 
-//demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
+demo1.job('cron', ci.cron('*/2 * * * * *', 'build'));
 
 ci.start();
-
-// var exitHook = require('exit-hook');
-
-// exitHook(function () {
-// 	console.log('exiting',process.pid);
-// });
-
-// throw 0
-
-// process.exit(0);
-
