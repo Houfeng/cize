@@ -19,6 +19,7 @@
         <h4 class="list-group-item-heading"><%= name %></h4>
         <div class="list-group-item-text">
           <% if(project.lastRecord){ %>
+          <i class="fa <%= $.statusIcons[project.lastRecord.status] %> pull-right" aria-hidden="true"></i>
           <span class="clickable" data-pjax-container="#panel-left,#panel-center,#panel-right" 
             href="/p/<%= project.lastRecord.projectName %>/<%= project.lastRecord.name %>/<%= project.lastRecord.sn %>">
             <%= project.lastRecord.name %> #<%= project.lastRecord.sn %>
@@ -42,6 +43,7 @@
         </h4>
         <div class="list-group-item-text">
           <% if(job.lastRecord){ %>
+          <i class="fa <%= $.statusIcons[job.lastRecord.status] %> pull-right" aria-hidden="true"></i>
           <span class="clickable" data-pjax-container="#panel-left,#panel-center,#panel-right" 
             href="/p/<%= job.lastRecord.projectName %>/<%= job.lastRecord.name %>/<%= job.lastRecord.sn %>">
             #<%= job.lastRecord.sn %>
