@@ -29,7 +29,7 @@ if (!FILE_EXP.test(confPath)) {
   confPath = path.normalize(`${confPath}/${CONF_FILE}`);
 }
 if (!fs.existsSync(confPath)) {
-  console.error(`"${confPath}"" not found`);
+  console.error(`"${confPath}" not found`);
   return process.exit(1);
 }
 
