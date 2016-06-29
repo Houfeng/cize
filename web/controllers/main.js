@@ -98,7 +98,7 @@ const MainController = nokit.define({
    **/
   _loadOneRecord: function (sn, callback) {
     var self = this;
-    self.job.getRecord(sn, function (err, record) {
+    self.job.getRecordBySn(sn, function (err, record) {
       if (err) return callback(err);
       if (!record) return self.context.notFound();
       var paths = self.ci.getContextPaths(record.contextId);
