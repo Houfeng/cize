@@ -21,5 +21,6 @@
   "rerun": "重新运行",
   "setting": "设置",
   "generate_token": "生成密钥",
-  "token_max_age": "密钥有效期 (天)"
+  "token_max_age": "密钥有效期 (天)",
+  "no_record": "没有记录"
 }

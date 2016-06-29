@@ -21,5 +21,6 @@
   "rerun": "Rerun",
   "setting": "Setting",
   "generate_token": "Generate token",
-  "token_max_age": "Token max age (day)"
+  "token_max_age": "Token max age (day)",
+  "no_record": "No record"
 }

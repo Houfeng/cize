@@ -24,6 +24,8 @@
             href="/p/<%= project.lastRecord.projectName %>/<%= project.lastRecord.name %>/<%= project.lastRecord.sn %>">
             <%= project.lastRecord.name %> #<%= project.lastRecord.sn %>
           </span>
+          <% } else { %>
+          <%= $.locale.no_record() %>
           <% } %>
         </div>
       </a>
@@ -48,6 +50,8 @@
             href="/p/<%= job.lastRecord.projectName %>/<%= job.lastRecord.name %>/<%= job.lastRecord.sn %>">
             #<%= job.lastRecord.sn %>
           </span>
+          <% } else { %>
+          <%= $.locale.no_record() %>
           <% } %>
         </div>
       </a>
