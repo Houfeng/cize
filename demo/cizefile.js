@@ -22,6 +22,16 @@ module.exports = function (ci) {
     */
   })));
 
+  demo1.job('test',ci.series([
+    function(done){
+      this.console.log('step1');
+      done(new Error('step1 Error'));
+    },
+    function(done){
+      this.console.log('step2');
+      done();
+    }
+  ]));
   //demo1.job('cron', ci.cron('*/10 * * * * *', 'pull'));
 
 };
