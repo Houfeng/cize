@@ -141,12 +141,15 @@ const MainController = nokit.define({
       self.server.ci.invoke(
         self.record.projectName,
         self.record.name,
-        JSON.parse((data || '{}').toString())
+        JSON.parse((data || '{}').toString()),
+        null,
+        function (started) {
+          self.context.send({
+            status: started,
+            time: new Date()
+          });
+        }
       );
-      self.context.send({
-        status: 'ok',
-        time: new Date()
-      });
     });
   }
 

@@ -66,6 +66,9 @@
       dataType: 'json',
       data: JSON.stringify(params),
       success: function (res) {
+        if (!res.status) {
+          return paramsInput.addClass('danger');
+        }
         $('#panel-center .list-group .list-group-item.active').click();
         triggerDialog.modal('hide');
       }
@@ -81,6 +84,7 @@
   $(document).on('click', '[data-rerun]', function (event) {
     var url = $(this).attr('data-rerun');
     $.post(url + '?_t=' + Date.now(), function (res) {
+      if (!res.status) return;
       $('#panel-center .list-group .list-group-item.active').click();
     });
     return false;

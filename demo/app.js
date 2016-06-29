@@ -30,6 +30,6 @@ demo1.job('test', ci.shell(function () {
   */
 }));
 
-demo1.job('cron', ci.cron('*/2 * * * * *', 'build'));
+//demo1.job('cron', ci.cron('*/2 * * * * *', 'build'));
 
 ci.start();

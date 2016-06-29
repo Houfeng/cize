@@ -19,12 +19,15 @@ const TriggerController = nokit.define({
     self.server.ci.invoke(
       self.context.params.project,
       self.context.params.job,
-      self.context.request.body || self.context.request.query
+      self.context.request.body || self.context.request.query,
+      null,
+      function (started) {
+        self.context.send({
+          status: started,
+          time: new Date()
+        });
+      }
     );
-    self.context.send({
-      status: 'ok',
-      time: new Date()
-    });
   }
 
 });
