@@ -28,7 +28,9 @@ demo1.job('test', ci.shell(function () {
   nokit test
   ping baidu.com
   */
-}));
+})).beforeRun(function (job) {
+  return false;
+});
 
 //demo1.job('cron', ci.cron('*/2 * * * * *', 'build'));
 
