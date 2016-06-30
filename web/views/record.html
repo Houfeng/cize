@@ -1,7 +1,7 @@
 <div class="panel-heading text-uppercase">
   <i class="fa fa-history" aria-hidden="true"></i>
   <%= $.locale.records() %>
-  <a class="pull-right clickable" data-toggle="modal" data-target="#trigger">
+  <a class="pull-right clickable" id="btn-trigger" data-toggle="modal" data-target="#trigger" data-trigger="/p/<%= this.projectName %>/<%= this.jobName %>/trigger">
   <i class="fa fa-crosshairs" aria-hidden="true"></i>
   <%= $.locale.trigger() %>
   </a>

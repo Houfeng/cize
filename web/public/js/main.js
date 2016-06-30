@@ -58,9 +58,10 @@
       confirmButton.attr('title', err.message);
       return paramsInput.addClass('danger');
     }
-    var url = location.href.split('?')[0];
+    var triggerButton = $('#btn-trigger');
+    var url = triggerButton.attr('data-trigger');
     $.ajax({
-      url: url + '/trigger?_t=' + Date.now(),
+      url: url + '?_t=' + Date.now(),
       type: 'POST',
       contentType: "application/json",
       dataType: 'json',
