@@ -2,7 +2,7 @@ const os = require('os');
 const pkg = require('./package.json');
 const Server = require('./lib/server');
 
-const exports = new Server();
+var exports = new Server();
 exports.Server = Server;
 exports.Project = require('./lib/project');
 exports.Job = require('./lib/job');
