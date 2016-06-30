@@ -2,6 +2,8 @@
 CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭建一个完整、可靠、便捷的 CI 服务。
 甚至可以像 Gulp 或 Grunt 一样，仅仅通过一个 ```cizefile.js``` 即可完成几乎所有的工作。
 
+<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
+
 # 快速搭建
 #### 安装 CIZE
 ```sh
@@ -73,5 +75,3 @@ The server on "localhost:9000" started #30181
 默认会启动和 CPU 核数相同的「工作进程」。
 
 接下来，可以在浏览器中访问 ```http://localhost/9000```
-
-<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
