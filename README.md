@@ -75,3 +75,20 @@ The server on "localhost:9000" started #30181
 默认会启动和 CPU 核数相同的「工作进程」。
 
 接下来，可以在浏览器中访问 ```http://localhost/9000```
+
+# 更多内容
+- [安装 CIZE](install)
+- [认识 cizefile.js](cizefile)
+- [基本对象：server、project、job](objects)
+- [通过 js 编写 Job](javascript)
+- [通过 shell 编写 Job](shell)
+- [多个子任务「串行」的 Job](series)
+- [多个子任务「并行」的 Job](parallel)
+- [定时触发的 Job](cron)
+- [通过其它 Job 触发的 Job](by)
+- [Shadow Job](shadow)
+- [编写一个扩展](plugin)
+
+### 常用扩展
+- [Gitlab](gitlab)
+- [Github](github)
