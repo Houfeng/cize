@@ -74,7 +74,4 @@ The server on "localhost:9000" started #30181
 
 接下来，可以在浏览器中访问 ```http://localhost/9000```
 
-<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/1.png" width="800"/>
-<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/2.png" width="800"/>
-<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/3.png" width="800"/>
-<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/4.png" width="800"/>
+<img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
