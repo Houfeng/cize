@@ -2,7 +2,7 @@
   "name": "cize",
   "version": "0.0.18",
   "dbVersion": "1",
-  "description": "",
+  "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
   "bin": {
     "cize": "./bin/cli.js"
