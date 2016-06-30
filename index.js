@@ -1,7 +1,8 @@
-var os = require('os');
-var Server = require('./lib/server');
+const os = require('os');
+const pkg = require('./package.json');
+const Server = require('./lib/server');
 
-var exports = new Server();
+const exports = new Server();
 exports.Server = Server;
 exports.Project = require('./lib/project');
 exports.Job = require('./lib/job');
@@ -19,5 +20,9 @@ exports.utils = require('./lib/utils');
 Error.prototype.toString = function () {
   return this.message + os.EOL + this.stack;
 };
+
+global.__defineGetter__(pkg.name, function () {
+  return exports;
+});
 
 module.exports = exports;
