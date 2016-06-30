@@ -58,11 +58,9 @@ if (cluster.isMaster) {
     port: 9000
   });
   var confFunc = require(confPath);
-  if (!utils.isFunction(confFunc)) {
-    console.error(`There is an error in "${CONF_FILE}"`);
-    return process.exit(1);
+  if (utils.isFunction(confFunc)) {
+    confFunc(ci);
   }
-  confFunc(ci);
   ci.start();
 
   /**
