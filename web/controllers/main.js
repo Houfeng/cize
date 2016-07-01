@@ -137,7 +137,10 @@ const MainController = nokit.define({
     var self = this;
     var paths = self.ci.getContextPaths(self.record.contextId);
     fs.readFile(paths.params, function (err, data) {
-      if (err) self.context.error(err);
+      if (err) return self.context.send({
+        status: false,
+        time: new Date()
+      });
       self.server.ci.invoke(
         self.record.projectName,
         self.record.name,

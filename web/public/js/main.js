@@ -85,7 +85,7 @@
   $(document).on('click', '[data-rerun]', function (event) {
     var url = $(this).attr('data-rerun');
     $.post(url + '?_t=' + Date.now(), function (res) {
-      if (!res.status) return;
+      if (!res.status) return $(this).addClass('danger');;
       $('#panel-center .list-group .list-group-item.active').click();
     });
     return false;
