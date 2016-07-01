@@ -101,13 +101,19 @@ const MainController = nokit.define({
     self.job.getRecordBySn(sn, function (err, record) {
       if (err) return callback(err);
       if (!record) return self.context.notFound();
+      self.record = record;
       var paths = self.ci.getContextPaths(record.contextId);
       var outFile = path.normalize(`${paths.out}/${record._id}.txt`);
-      fs.readFile(outFile, function (err, data) {
-        if (err) return callback(err);
-        record.out = data.toString();
-        self.record = record;
-        callback();
+      fs.exists(outFile, function (exists) {
+        if (!exists) {
+          self.record.out = 'not found';
+          return callback();
+        }
+        fs.readFile(outFile, function (err, data) {
+          if (err) return callback(err);
+          self.record.out = data.toString();
+          callback();
+        });
       });
     });
   },
