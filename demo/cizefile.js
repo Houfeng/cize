@@ -6,7 +6,7 @@
  **/
 cize.config({
   port: 9000,
-  secret: '12345',
+  secret: '12345'
 });
 
 /**

@@ -1,6 +1,11 @@
-var assert = require('assert');
-var rmdir = require('rmdir');
-var ci = require('../');
+const assert = require('assert');
+const rmdir = require('rmdir');
+const nokit = require('nokitjs');
+const ci = require('../');
+
+nokit.Server.prototype.start = function (callback) {
+  if (callback) callback();
+};
 
 describe('server', function () {
 
