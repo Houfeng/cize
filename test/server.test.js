@@ -46,18 +46,36 @@ describe('server', function () {
 
   describe('#invoke()', function () {
     it('define project', function (done) {
-      //ci.start(function () {
-      ci.invoke('test', 'test', { test: true }, function () {
+      ci.invoke('test', 'test', { test: true }, function (err) {
+        if (err) throw err;
         assert.equal(testInstance.name, 'test');
         assert.equal(testParams.test, true);
         done();
       });
-      //});
+    });
+  });
+
+  describe('#getProjects()', function () {
+    it('getProjects', function () {
+      assert.equal(ci.getProjects().length > 0, true);
+    });
+  });
+
+  describe('#getRecords()', function () {
+    it('getRecords', function () {
+      ci.invoke('test', 'test', { test: true }, function (err) {
+        if (err) throw err;
+        ci.getJobRecords(1, 0, function (err, records) {
+          if (err) throw err;
+          assert.equal(records.length, 1);
+        });
+      });
     });
   });
 
   afterEach(function () {
     execSync(`rm -rf ${workspace}`);
+    ci.stop();
   });
 
 });
