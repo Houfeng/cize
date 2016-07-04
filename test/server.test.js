@@ -5,7 +5,7 @@ const execSync = require('child_process').exec;
 const ci = require('../');
 
 nokit.Server.prototype.start = function (callback) {
-  if (callback) callback();
+  if (callback) callback(null, 'started');
 };
 
 describe('server', function () {
@@ -68,6 +68,7 @@ describe('server', function () {
         ci.getJobRecords(1, 0, function (err, records) {
           if (err) throw err;
           assert.equal(records.length, 1);
+          assert.equal(records[0].name, 'test');
         });
       });
     });

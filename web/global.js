@@ -11,41 +11,6 @@ const Global = nokit.define({
   onStart: function (server, done) {
     utils.init(server);
     done();
-  },
-
-  /**
-   * 在 server 停止时
-   **/
-  onStop: function (server, done) {
-    done();
-  },
-
-  /**
-   * 在请求发生异常时
-   **/
-  onError: function (context, done) {
-    done();
-  },
-
-  /**
-   * 在请求到达时
-   **/
-  onRequest: function (context, done) {
-    done();
-  },
-
-  /**
-   * 在收到请求数据时
-   **/
-  onReceived: function (context, done) {
-    done();
-  },
-
-  /**
-   * 在发送响应时
-   **/
-  onResponse: function (context, done) {
-    done();
   }
 
 });
