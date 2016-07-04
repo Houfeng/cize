@@ -16,7 +16,8 @@ describe('server', function () {
   before(function (done) {
     ci.config({
       port: 8008,
-      workspace: workspace
+      workspace: workspace,
+      secret: '12345'
     });
     testProject = ci.project('test', {
       git: '/test.git'
@@ -74,9 +75,20 @@ describe('server', function () {
     });
   });
 
+  describe('#clean()', function () {
+    it('clean', function (done) {
+      ci.clean({}, function (err) {
+        if (err) throw err;
+        ci.getRecords(1, 0, function (err, records) {
+          if (err) throw err;
+          assert.equal(records.length, 0);
+          done();
+        });
+      });
+    });
+  });
+
   after(function (done) {
-    //execSync(`rm -rf ${workspace}`);
-    //ci.stop();
     ci.clean({}, done);
   });
 

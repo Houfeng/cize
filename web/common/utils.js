@@ -1,10 +1,6 @@
 const utils = nokit.utils;
 utils.pkg = require('../../package.json');
 
-utils.init = function (server) {
-  //noop
-};
-
 utils.statusIcons = {
   "300": "fa-exclamation-circle",
   "200": "fa-check-circle",
