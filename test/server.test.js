@@ -13,7 +13,7 @@ describe('server', function () {
   var workspace = `${__dirname}/.workspace`;
 
   var testProject, testJob, testInstance, testParams;
-  beforeEach(function () {
+  beforeEach(function (done) {
     ci.config({
       port: 8008,
       workspace: workspace
@@ -26,6 +26,7 @@ describe('server', function () {
       testParams = self.params;
       self.done();
     });
+    ci.start(done);
   });
 
   describe('#config()', function () {
@@ -45,13 +46,13 @@ describe('server', function () {
 
   describe('#invoke()', function () {
     it('define project', function (done) {
-      ci.start(function () {
-        ci.invoke('test', 'test', { test: true }, function () {
-          assert.equal(testInstance.name, 'test');
-          assert.equal(testParams.test, true);
-          done();
-        });
+      //ci.start(function () {
+      ci.invoke('test', 'test', { test: true }, function () {
+        assert.equal(testInstance.name, 'test');
+        assert.equal(testParams.test, true);
+        done();
       });
+      //});
     });
   });
 
