@@ -1,6 +1,7 @@
 const assert = require('assert');
 const rmdir = require('rmdir');
 const nokit = require('nokitjs');
+const execSync = require('child_process').exec;
 const ci = require('../');
 
 nokit.Server.prototype.start = function (callback) {
@@ -25,7 +26,6 @@ describe('server', function () {
       testParams = self.params;
       self.done();
     });
-    ci.start();
   });
 
   describe('#config()', function () {
@@ -45,16 +45,18 @@ describe('server', function () {
 
   describe('#invoke()', function () {
     it('define project', function (done) {
-      ci.invoke('test', 'test', { test: true }, function () {
-        assert.equal(testInstance.name, 'test');
-        assert.equal(testParams.test, true);
-        done();
+      ci.start(function () {
+        ci.invoke('test', 'test', { test: true }, function () {
+          assert.equal(testInstance.name, 'test');
+          assert.equal(testParams.test, true);
+          done();
+        });
       });
     });
   });
 
   afterEach(function () {
-    ci.stop();
+    execSync(`rm -rf ${workspace}`);
   });
 
 });
