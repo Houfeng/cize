@@ -14,6 +14,10 @@ describe('server', function () {
 
   var testProject, testJob, testInstance, testParams;
   before(function (done) {
+    testProject = null;
+    testJob = null;
+    testInstance = null;
+    testParams = null;
     ci.config({
       port: 8008,
       workspace: workspace,
@@ -84,6 +88,28 @@ describe('server', function () {
           assert.equal(records.length, 0);
           done();
         });
+      });
+    });
+  });
+
+  describe('#token', function () {
+    it('createToken & verifyToken', function () {
+      var token = ci.createToken(1);
+      assert.equal(token != null, true);
+      var payload = ci.verifyToken(token);
+      assert.equal(payload != null, true);
+    });
+  });
+
+  describe('#beforeInvoke()', function () {
+    it('beforeInvoke()', function (done) {
+      testParams = null;
+      ci.beforeInvoke('test', 'test', function () {
+        return false;
+      });
+      ci.invoke('test', 'test', { test: true }, function (err) {
+        assert.equal(testParams, null);
+        done();
       });
     });
   });
