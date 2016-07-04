@@ -13,7 +13,7 @@ describe('server', function () {
   var workspace = `${__dirname}/.workspace`;
 
   var testProject, testJob, testInstance, testParams;
-  beforeEach(function (done) {
+  before(function (done) {
     ci.config({
       port: 8008,
       workspace: workspace
@@ -30,7 +30,7 @@ describe('server', function () {
   });
 
   describe('#config()', function () {
-    it('init by options', function () {
+    it('config', function () {
       assert.equal(ci.paths.data, `${workspace}/data/`);
       assert.equal(ci.paths.works, `${workspace}/works/`);
       assert.equal(ci.options.port, 8008);
@@ -62,21 +62,22 @@ describe('server', function () {
   });
 
   describe('#getRecords()', function () {
-    it('getRecords', function () {
+    it('getRecords', function (done) {
       ci.invoke('test', 'test', { test: true }, function (err) {
         if (err) throw err;
-        ci.getJobRecords(1, 0, function (err, records) {
+        ci.getRecords(1, 0, function (err, records) {
           if (err) throw err;
-          assert.equal(records.length, 1);
           assert.equal(records[0].name, 'test');
+          done();
         });
       });
     });
   });
 
-  afterEach(function () {
-    execSync(`rm -rf ${workspace}`);
-    ci.stop();
+  after(function (done) {
+    //execSync(`rm -rf ${workspace}`);
+    //ci.stop();
+    ci.clean({}, done);
   });
 
 });
