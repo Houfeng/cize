@@ -78,7 +78,7 @@ The server on "localhost:9000" started #30181
 ```
 默认会启动和 CPU 核数相同的「工作进程」。
 
-接下来，可以在浏览器中访问 ```http://localhost/9000```
+接下来，可以在浏览器中访问 ```http://localhost:9000```
 
 # 更多内容
 
