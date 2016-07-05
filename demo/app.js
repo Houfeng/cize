@@ -12,13 +12,15 @@ var demo1 = ci.project('demo1', {
 
 demo1.job('pull', ci.shell(function () {
   /*
-  git clone https://github.com/nokitjs/nokit.git ./
-  npm i
+  #git clone https://github.com/nokitjs/nokit.git ./
+  #npm i
+  #echo pull
   */
 }));
 
 demo1.job('build', ci.by(['pull'], ci.shell(function () {
   /*
+  npm i
   npm test
   */
 })));
