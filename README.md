@@ -1,11 +1,10 @@
 
-[![npm version](https://badge.fury.io/js/cize.svg)](http://badge.fury.io/js/cize)
-[![Build Status](https://travis-ci.org/Houfeng/cize.svg?branch=master)](https://travis-ci.org/Houfeng/cize) 
-----
-
 # CIZE 是什么？
 CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭建一个完整、可靠、便捷的 CI 服务。
 甚至可以像 Gulp 或 Grunt 一样，仅仅通过一个 ```cizefile.js``` 即可完成几乎所有的工作。
+
+[![npm version](https://badge.fury.io/js/cize.svg)](http://badge.fury.io/js/cize)
+[![Build Status](https://travis-ci.org/Houfeng/cize.svg?branch=master)](https://travis-ci.org/Houfeng/cize) 
 
 <img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
 
