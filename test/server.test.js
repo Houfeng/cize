@@ -119,10 +119,12 @@ describe('server', function () {
   });
 
   after(function (done) {
-    ci.clean({}, function (err) {
-      if (err) throw err;
-      done();
-    });
+    setTimeout(function () {
+      ci.clean({}, function (err) {
+        if (err) throw err;
+        done();
+      });
+    }, 500);
   });
 
 });
