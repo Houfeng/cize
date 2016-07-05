@@ -1,5 +1,4 @@
 
-----
 [![npm version](https://badge.fury.io/js/cize.svg)](http://badge.fury.io/js/cize)
 [![Build Status](https://travis-ci.org/houfeng/cize.svg?branch=master)](https://travis-ci.org/houfeng/cize) 
 ----
