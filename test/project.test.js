@@ -8,7 +8,7 @@ nokit.Server.prototype.start = function (callback) {
   if (callback) callback(null, 'started');
 };
 
-describe('server', function () {
+describe('project', function () {
 
   var workspace = `${__dirname}/workspace`;
 
