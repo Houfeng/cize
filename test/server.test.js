@@ -2,6 +2,7 @@ const assert = require('assert');
 const rmdir = require('rmdir');
 const nokit = require('nokitjs');
 const execSync = require('child_process').exec;
+const path = require('path');
 const ci = require('../');
 
 nokit.Server.prototype.start = function (callback) {
@@ -10,7 +11,7 @@ nokit.Server.prototype.start = function (callback) {
 
 describe('server', function () {
 
-  var workspace = `${__dirname}/.workspace`;
+  var workspace = path.resolve(__dirname, '../demo');
 
   var testProject, testJob, testInstance, testParams;
   before(function (done) {
@@ -31,7 +32,10 @@ describe('server', function () {
       testParams = self.params;
       self.done();
     });
-    ci.start(done);
+    ci.start(function (err) {
+      if (err) throw err;
+      done();
+    });
   });
 
   describe('#config()', function () {
@@ -115,7 +119,10 @@ describe('server', function () {
   });
 
   after(function (done) {
-    ci.clean({}, done);
+    ci.clean({}, function (err) {
+      if (err) throw err;
+      done();
+    });
   });
 
 });
