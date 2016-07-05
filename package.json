@@ -8,7 +8,7 @@
     "cize": "./bin/cli.js"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha -t 5s",
     "cover": "istanbul cover _mocha"
   },
   "keywords": [
