@@ -28,7 +28,8 @@
       "^/bootstrap(.*)": "../node_modules/bootstrap/dist",
       "^/jquery(.*)": "../node_modules/jquery/dist",
       "^/font-awesome(.*)": "../node_modules/font-awesome",
-      "^/pjax/(.*)$": "../node_modules/nokit-pjax/client"
+      "^/pjax/(.*)$": "../node_modules/nokit-pjax/client",
+      "^/xterm/(.*)$": "../node_modules/xterm/src"
     }
   },
   "session": {
