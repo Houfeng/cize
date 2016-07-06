@@ -44,7 +44,7 @@
     "real-utils": "0.0.1",
     "request": "^2.72.0",
     "rmdir": "^1.2.0",
-    "shify": "0.0.7",
+    "shify": "0.0.8",
     "sqlite3": "^3.1.4"
   },
   "devDependencies": {
