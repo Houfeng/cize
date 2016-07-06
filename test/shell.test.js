@@ -36,6 +36,7 @@ describe('shell', function () {
   it('#shell', function (done) {
     testProject.job('shell', ci.shell(function () {
       /*
+      exit 0
       */
     }));
     testProject.invoke('shell', function (err) {
