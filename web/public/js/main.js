@@ -20,8 +20,8 @@
     }
     var url = location.href.split('?')[0];
     $.get(url + '/console?_t=' + Date.now(), function (data) {
-      if (console.text() != data) {
-        console.text(data);
+      if (console.html() != data) {
+        console.html(data);
         console.prop('scrollTop', console.prop('scrollHeight'));
       }
       return fetchOut(SHORT_INTERVAL);

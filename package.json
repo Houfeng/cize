@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "dbVersion": "1",
   "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
@@ -26,6 +26,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "ansi-to-html": "^0.4.1",
     "async": "^1.5.2",
     "bootstrap": "^3.3.6",
     "cify": "^1.0.0",
@@ -45,8 +46,7 @@
     "request": "^2.72.0",
     "rmdir": "^1.2.0",
     "shify": "^0.1.0",
-    "sqlite3": "^3.1.4",
-    "xterm": "^0.33.0"
+    "sqlite3": "^3.1.4"
   },
   "devDependencies": {
     "istanbul": "^0.4.3",

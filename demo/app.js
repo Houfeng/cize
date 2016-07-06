@@ -20,7 +20,7 @@ demo1.job('pull', ci.shell(function () {
 
 demo1.job('build', ci.by(['pull'], ci.shell(function () {
   /*
-  npm i
+  nokit xxx
   npm test
   */
 })));

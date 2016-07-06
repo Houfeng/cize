@@ -1,7 +1,11 @@
 const async = require('async');
 const fs = require('fs');
 const path = require('path');
-
+const Convert = require('ansi-to-html');
+const convert = new Convert({
+  fg: '#333',
+  bg: '#fff'
+});
 /**
  * 定义 MainController
  **/
@@ -111,7 +115,7 @@ const MainController = nokit.define({
         }
         fs.readFile(outFile, function (err, data) {
           if (err) return callback(err);
-          self.record.out = data.toString();
+          self.record.out = convert.toHtml(data.toString().replace(/\[2K\[0G/igm, ''));
           callback();
         });
       });
