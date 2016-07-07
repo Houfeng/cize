@@ -6,7 +6,7 @@ const os = require('os');
 const stp = require('stp');
 const console = require('console3');
 
-const WORKER_START_DELAY = 250;
+const WORKER_START_DELAY = 500;
 
 module.exports = function (cmdline) {
 

@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "dbVersion": "1",
   "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
