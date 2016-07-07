@@ -5,7 +5,6 @@
  * workspace：工作目录，默认为 cizefile.js 所在目录
  **/
 cize.config({
-  port: 9000,
   secret: '12345'
 });
 
