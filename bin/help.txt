@@ -1,0 +1,7 @@
+Usage:
+  ${cmd} [/fakepath/${conf}]
+
+options:
+  -w: worker number
+  -p: port
+  -s: secret 
