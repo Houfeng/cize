@@ -31,5 +31,6 @@ demo.job('hello1', function (self) {
 demo.job('hello2', cize.shell(function () {
   /*
     echo "hello world"
+    npm test 
   */
 }));
