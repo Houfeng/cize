@@ -1,5 +1,6 @@
 const cluster = require('cluster');
 const ci = require('../');
+const utils = ci.utils;
 const path = require('path');
 const fs = require('fs');
 
@@ -27,7 +28,7 @@ module.exports = function (cmdline) {
   });
 
   //监控配置文件
-  fs.watch(confPath, function () {
+  fs.watch(cmdline.configFile, function () {
     cluster.worker.disconnect();
     process.exit(0);
   });

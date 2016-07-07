@@ -2,7 +2,6 @@ const cluster = require('cluster');
 const ci = require('../');
 const path = require('path');
 const fs = require('fs');
-const utils = ci.utils;
 const os = require('os');
 const stp = require('stp');
 const console = require('console3');
