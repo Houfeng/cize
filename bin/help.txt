@@ -1,8 +1,11 @@
 Usage:
-  ${cmd} [path/${conf}] [options]
+  ${cmd} [folder|file] [options]
 
 Options:
-  -w    Set the number of workers
-  -p    Set the port
-  -s    Set the secret 
-  -h    Displays help information
+  -w   set the number of workers
+  -p   set the port
+  -s   set the secret 
+  -h   display help information
+
+Example:
+  ${cmd} ./ -p=9000 -s=12345 -w=4

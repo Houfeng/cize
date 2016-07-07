@@ -5,6 +5,7 @@ const fs = require('fs');
 const utils = ci.utils;
 const os = require('os');
 const stp = require('stp');
+const console = require('console3');
 
 const WORKER_START_DELAY = 250;
 
@@ -12,7 +13,7 @@ module.exports = function (cmdline) {
 
   //查看版本
   function version() {
-    console.info(`${cmdline.NAME.toUpperCase()} ${cmdline.VERSION}${os.EOL}`);
+    console.log(`${cmdline.NAME.toUpperCase()} ${cmdline.VERSION}${os.EOL}`);
     return true;
   }
   if (cmdline.options.has('-v')) return version();
@@ -20,7 +21,7 @@ module.exports = function (cmdline) {
   //显示帮助
   function help() {
     var info = fs.readFileSync(path.normalize(`${__dirname}/help.txt`)).toString();
-    console.info(stp(info, {
+    console.log(stp(info, {
       cmd: cmdline.NAME,
       conf: cmdline.CONFIG_FILE_NAME
     }) + os.EOL);
@@ -29,7 +30,7 @@ module.exports = function (cmdline) {
   if (cmdline.options.has('-h')) return help();
 
   //显示启动信息
-  process.stdout.write('Strarting.');
+  console.write('Strarting.');
 
   //检查 cizefile
   if (!fs.existsSync(cmdline.configFile)) {
@@ -54,7 +55,7 @@ module.exports = function (cmdline) {
   //当有 worker 断开并退出时
   cluster.on('disconnect', (worker) => {
     workerCount--;
-    console.info(`#${worker.id} disconnected`);
+    console.log(`#${worker.id} disconnected`);
     cluster.fork();
   });
 
