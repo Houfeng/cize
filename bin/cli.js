@@ -11,6 +11,7 @@ const os = require('os');
 
 const CONF_FILE = `${pkg.name}file.js`;
 const FILE_EXP = /\.js$/i;
+const WORKER_START_DELAY = 250;
 
 const cmdline = new CmdLine();
 
@@ -18,7 +19,7 @@ const cmdline = new CmdLine();
  * 查看版本
  **/
 if (cmdline.options.has('-v')) {
-  return console.info(`${pkg.name} ${pkg.version}`);
+  return console.info(`${pkg.name} ${pkg.version}${os.EOL}`);
 }
 
 /**
@@ -28,24 +29,44 @@ var confPath = path.resolve(process.cwd(), cmdline.args[0] || './');
 if (!FILE_EXP.test(confPath)) {
   confPath = path.normalize(`${confPath}/${CONF_FILE}`);
 }
-if (!fs.existsSync(confPath)) {
-  console.error(`"${confPath}" not found`);
-  return process.exit(1);
-}
 
 if (cluster.isMaster) {
 
-  /**
-   *  cluster
-   **/
-  console.log('Strarting...');
-  var workerNum = Number(cmdline.options.getValue('-w') || os.cpus().length);
-  for (var i = 0; i < workerNum; i++) {
-    cluster.fork();
+  process.stdout.write('Strarting.');
+
+  if (!fs.existsSync(confPath)) {
+    console.error(`${os.EOL}Not found "${confPath}"${os.EOL}`);
+    return process.exit(1);
   }
-  cluster.on('disconnect', (worker) => {
-    console.error(`#${worker.id} disconnected`);
+
+  var workerMax = Number(cmdline.options.getValue('-w') || os.cpus().length);
+  var workerCount = 0;
+
+  function startWorkers(num) {
     cluster.fork();
+    if ((--num) <= 0) return;
+    setTimeout(function () {
+      startWorkers(num);
+    }, WORKER_START_DELAY);
+  }
+  startWorkers(workerMax);
+
+  cluster.on('disconnect', (worker) => {
+    workerCount--;
+    console.info(`#${worker.id} disconnected`);
+    cluster.fork();
+  });
+
+  cluster.on('message', function (data) {
+    process.stdout.write('.');
+    if (!data.status) {
+      console.error(os.EOL + data.message + os.EOL);
+      return process.exit(1);
+    }
+    workerCount++;
+    if (workerCount >= workerMax) {
+      console.log(os.EOL + data.message);
+    }
   });
 
 } else {
@@ -61,7 +82,12 @@ if (cluster.isMaster) {
   if (utils.isFunction(confFunc)) {
     confFunc(ci);
   }
-  ci.start();
+  ci.start(function (err, info) {
+    process.send({
+      status: !err,
+      message: err ? err.toString() : info
+    });
+  });
 
   /**
    * 监控配置文件
