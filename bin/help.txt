@@ -1,7 +1,8 @@
 Usage:
-  ${cmd} [/fakepath/${conf}]
+  ${cmd} [path/${conf}] [options]
 
-options:
-  -w: worker number
-  -p: port
-  -s: secret 
+Options:
+  -w    Set the number of workers
+  -p    Set the port
+  -s    Set the secret 
+  -h    Displays help information

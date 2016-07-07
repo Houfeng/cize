@@ -26,7 +26,7 @@ module.exports = function (cmdline) {
     }) + os.EOL);
     return true;
   }
-  if (cmdline.options.has('-h')) return version() && help();
+  if (cmdline.options.has('-h')) return help();
 
   //显示启动信息
   process.stdout.write('Strarting.');
