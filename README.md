@@ -173,6 +173,7 @@ module.exports = function(options...){
   };
 };
 ```
+可以将扩展发布为一个「npm 包」，让更多的人使用。
 
 # 有关服务配置
 
