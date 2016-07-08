@@ -32,6 +32,7 @@
     "ansi-to-html": "^0.4.1",
     "async": "^1.5.2",
     "bootstrap": "^3.3.6",
+    "chokidar": "^1.6.0",
     "cify": "^1.0.0",
     "cmdline": "0.0.5",
     "console3": "^1.0.3",

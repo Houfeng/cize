@@ -2,7 +2,9 @@ const cluster = require('cluster');
 const ci = require('../');
 const utils = ci.utils;
 const path = require('path');
-const fs = require('fs');
+const chokidar = require('chokidar');
+
+const EXIT_DELAY = 3000;
 
 module.exports = function (cmdline) {
 
@@ -30,9 +32,13 @@ module.exports = function (cmdline) {
   });
 
   //监控配置文件
-  fs.watch(cmdline.configFile, function () {
+  chokidar.watch(cmdline.configFile, {
+    ignoreInitial: true
+  }).on('all', function (event, path) {
     cluster.worker.disconnect();
-    process.exit(0);
+    setTimeout(function () {
+      process.exit(0);
+    }, EXIT_DELAY);
   });
 
 };

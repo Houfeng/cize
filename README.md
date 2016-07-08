@@ -49,7 +49,6 @@ demo.job('hello', function (self) {
   self.console.log('hello world');
   self.done();
 });
-
 ```
 
 然后，在「工作目录」中执行
@@ -74,39 +73,68 @@ The server on "localhost:9000" started
 #### 用 js 编写一个 Job
 ```js
 demo.job('test', function (self) {
-
+  self.console.log('test');
+  self.done();
 });
 ```
 这是最基础的 Job 类型，是其它 Job 类型或「扩展」的基础。
 
 #### 用 shell 编写一个 job
 ```js
-/**
- * 定义一个用 SHELL 编写的 JOB
- * 如下用到了 cize.shell，这是一个「内置扩展」
- **/
 demo.job('test', cize.shell(function () {
   /*
     echo "hello world"
   */
 }));
 ```
+ 定义一个用 SHELL 编写的 JOB，用到了 cize.shell，这是一个「内置扩展」
 
 #### 定时执行的 Job
+```js
+demo.job('test', cize.cron('* */2 * * * *', cize.shell(function () {
+  /*
+    echo "hello world"
+  */
+})));
 ```
-```
+如上定义了一个每两分种触发一次的 Job 并且，嵌套使用了 shell.
 
 #### 监听其它 Job 的 Job
+```js
+demo.job('test2', cize.by('test1', function(self){
+  self.console.log('hello');
+  self.done();
+});
 ```
-```
+如下，在 test1 执行成功后，将会触发 test2
 
 #### 串行执行的 Job
+```js
+demo.job('test', cize.series([
+  "test1",
+  function(self){
+    self.console.log('hello');
+    self.done();
+  },
+  "test3"
+]));
 ```
-```
+series 是一个内置扩展，可以定义一个「串行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
+也可以是指定要调用的其它 Job 的名称。
 
 #### 并行执行的 Job
+```js
+demo.job('test', cize.parallel([
+  "test1",
+  function(self){
+    self.console.log('hello');
+    self.done();
+  },
+  "test3"
+]));
 ```
-```
+series 是一个内置扩展，可以定义一个「并行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
+也可以是指定要调用的其它 Job 的名称。
 
 # 更多内容
 
