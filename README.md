@@ -11,7 +11,7 @@ CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭
 # 快速搭建
 ### 全局安装 
 ```sh
-$ sudo install cize -g
+$ [sudo] npm install cize -g
 ```
 
 ### 编写 Job
