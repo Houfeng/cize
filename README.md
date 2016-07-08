@@ -18,8 +18,8 @@ $ sudo install cize -g
 
 新建 cizefile.js
 ```
-$ mkdir cize_workspace
-$ cd cize_workspace
+$ mkdir your_path
+$ cd your_path
 $ vim cizefile.js
 ```
 
