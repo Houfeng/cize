@@ -2,11 +2,18 @@ const cluster = require('cluster');
 const ci = require('../');
 const utils = ci.utils;
 const path = require('path');
-const chokidar = require('chokidar');
-
-const EXIT_DELAY = 3000;
 
 module.exports = function (cmdline) {
+
+  //发生异常时向 master 发消息
+  process.on('uncaughtException', function (err) {
+    process.send({
+      status: false,
+      message: err.toString(),
+      pid: process.pid,
+      workerId: cluster.worker.id
+    });
+  });
 
   //默认或 cli 配置
   ci.config({
@@ -29,16 +36,6 @@ module.exports = function (cmdline) {
       pid: process.pid,
       workerId: cluster.worker.id
     });
-  });
-
-  //监控配置文件
-  chokidar.watch(cmdline.configFile, {
-    ignoreInitial: true
-  }).on('all', function (event, path) {
-    cluster.worker.disconnect();
-    setTimeout(function () {
-      process.exit(0);
-    }, EXIT_DELAY);
   });
 
 };
