@@ -9,14 +9,14 @@ CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭
 <img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
 
 # 快速搭建
-#### 安装 CIZE
+#### 全局安装 CIZE
 ```sh
 $ sudo install cize -g
 ```
 
 #### 新建 cizefile 添加 JOB
 
-新建一个 cizefile.js
+新建 cizefile.js
 ```
 $ mkdir cize_workspace
 $ cd cize_workspace
@@ -25,38 +25,18 @@ $ vim cizefile.js
 
 输入如下内容
 ```js
-/**
- * 配置服务，可以指定「端口」、「密钥」、「工作目录」等
- * port：端口，默认为 9000
- * secret：密且，默认没启用，启用后登录「WEB 版监视界面」需要提供
- * workspace：工作目录，默认为 cizefile.js 所在目录
- **/
-cize.config({
-  port: 9000,
-  secret: '12345',
-});
-
-/**
- * 定义「项目」，项目用于为 JOB 分组，第二个参数为「项目配置」
- * {} 不能省略，省略时为获取指定名称的项目
- **/
+//定义「项目」
 const demo = cize.project('demo', {});
 
-/**
- * 定义一个 JOB，这是一个最基本的 JOB
- **/
+//定义一个 JOB，这是一个最基本的 JOB
 demo.job('hello', function (self) {
   self.console.log('hello world');
   self.done();
 });
 ```
 
-然后，在「工作目录」中执行
-```sh
-$ cize
-```
+然后，在「工作目录」中执行 ```cize``` 启动服务
 
-即可启动 CIZE 服务
 ```
 $ cize
 Strarting...
@@ -65,7 +45,18 @@ The server on "localhost:9000" started
 默认会启动和 CPU 核数相同的「工作进程」。
 
 接下来，可以在浏览器中访问 ```http://localhost:9000``` , 
-可以在 UI 中手动触发这个名为 ```hello``` 的 Job
+并可以在 UI 中手动触发这个名为 ```hello``` 的 Job
+
+# 定义 PROJECT
+```js
+const demo = cize.project('demo', {
+  ...
+  //可以在此添加针对项目的配置
+  ...
+});
+```
+注意，即便一个项目不需要任何配置，也不能省略第二个参数，
+没有第二个参数时 ```cize.project(name)``` 为获取指定的项目
 
 # 定义 JOB
 假定现在已经有一个定义好的名为 ```demo``` 的 ```project``` 
@@ -135,6 +126,57 @@ demo.job('test', cize.parallel([
 ```
 series 是一个内置扩展，可以定义一个「并行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
 也可以是指定要调用的其它 Job 的名称。
+
+#### 不同类型的 JOB 嵌套
+CIZE 所有的 Job 可以自由嵌套，例如：
+```js
+demo.job('test', cize.parallel([
+  "test1",
+  function(self){
+    self.console.log('hello');
+    self.done();
+  },
+  "test3",
+  cize.series([
+    "test4",
+    cize.shell(function(){
+      /*
+        echo hello
+      */
+    })
+  ])
+]));
+```
+当你使用一个「外部扩展」时，也可以混合使用。
+
+# 有关服务配置
+
+#### 在 cizefile.js 中配置
+```js
+cize.config({
+  port: 9000,
+  secret: '12345'
+});
+```
+
+#### 通过命令行工具
+```js
+cize ./ -p=port -s=secret
+```
+通过 cize -h 可以查看完整的说明
+```sh
+Usage:
+  cize [folder|file] [options]
+
+Options:
+  -w   set the number of workers
+  -p   set the port
+  -s   set the secret
+  -h   display help information
+
+Example:
+  cize ./ -p=9000 -s=12345 -w=4
+```
 
 # 更多内容
 
