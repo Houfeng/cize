@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "dbVersion": "1",
   "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
@@ -31,7 +31,7 @@
     "bootstrap": "^3.3.6",
     "cify": "^1.0.0",
     "cmdline": "0.0.5",
-    "console3": "^1.0.0",
+    "console3": "^1.0.3",
     "cron": "^1.1.0",
     "exit-hook2": "^1.0.8",
     "font-awesome": "^4.6.3",
