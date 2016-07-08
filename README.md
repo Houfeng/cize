@@ -28,7 +28,7 @@ $ vim cizefile.js
 //定义「项目」
 const demo = cize.project('demo', {});
 
-//定义一个 JOB，这是一个最基本的 JOB
+//定义一个 Job，这是一个最基础的 Job
 demo.job('hello', function (self) {
   self.console.log('hello world');
   self.done();
@@ -61,7 +61,7 @@ const demo = cize.project('demo', {
 # 定义 Job
 假定现在已经有一个定义好的名为 ```demo``` 的 ```project``` 
 
-### 用 js 编写一个 Job
+### 用 js 编写的 Job
 ```js
 demo.job('test', function (self) {
   self.console.log('test');
@@ -70,7 +70,7 @@ demo.job('test', function (self) {
 ```
 这是最基础的 Job 类型，是其它 Job 类型或「扩展」的基础。
 
-### 用 shell 编写一个 job
+### 用 shell 编写的 Job
 ```js
 demo.job('test', cize.shell(function () {
   /*
@@ -78,7 +78,7 @@ demo.job('test', cize.shell(function () {
   */
 }));
 ```
- 定义一个用 SHELL 编写的 JOB，用到了 cize.shell，这是一个「内置扩展」
+ 定义一个用 SHELL 编写的 Job，用到了 cize.shell，这是一个「内置扩展」
 
 ### 定时执行的 Job
 ```js
@@ -127,7 +127,7 @@ demo.job('test', cize.parallel([
 series 是一个内置扩展，可以定义一个「并行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
 也可以是指定要调用的其它 Job 的名称。
 
-### 不同类型的 JOB 嵌套
+### 多步嵌套的 Job 
 CIZE 所有的 Job 可以自由嵌套，例如：
 ```js
 demo.job('test', cize.parallel([
@@ -159,7 +159,7 @@ module.exports = function(options...){
   };
 };
 ```
-如查需要在 job 定义时进行一些处理，可以使用 ```register``` ，如下
+如查需要在 Job 定义时进行一些处理，可以使用 ```register``` ，如下
 ```js
 module.exports = function(options...){
   return {
