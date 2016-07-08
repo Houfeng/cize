@@ -149,6 +149,31 @@ demo.job('test', cize.parallel([
 ```
 当你使用一个「外部扩展」时，也可以混合使用。
 
+# 编写一个扩展
+如上用到的 cize.shell、cize.series、cize。parallel、cize.cron、cize.by 是 cize 默契认包含的「内置扩展」。
+编写一个「外部扩展」和「内置扩展」并无本质区别，如下:
+```js
+module.exports = function(options...){
+  return function(self){
+    //处理逻辑
+  };
+};
+```
+如查需要在 job 定义时进行一些处理，可以使用 ```register``` ，如下
+```js
+module.exports = function(options...){
+  return {
+    register: function(Job){
+      //Job 是你的「自定义 Job 类型」
+      //注册时逻辑
+    },
+    runable: function(self){
+      //执行时逻辑
+    }
+  };
+};
+```
+
 # 有关服务配置
 
 ### 在 cizefile.js 中配置
