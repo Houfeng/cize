@@ -23,7 +23,9 @@ module.exports = function (cmdline) {
   ci.start(function (err, info) {
     process.send({
       status: !err,
-      message: err ? err.toString() : info
+      message: err ? err.toString() : info,
+      pid: process.pid,
+      workerId: cluster.worker.id
     });
   });
 

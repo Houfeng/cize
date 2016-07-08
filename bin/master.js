@@ -40,6 +40,7 @@ module.exports = function (cmdline) {
   //初始化 worker 数量及记数变量
   var workerMax = Number(cmdline.options.getValue('-w')) || os.cpus().length;
   var workerCount = 0;
+  var workerAllReady = false;
 
   //启动 workers
   function startWorkers(num) {
@@ -54,20 +55,27 @@ module.exports = function (cmdline) {
   //当有 worker 断开并退出时
   cluster.on('disconnect', (worker) => {
     workerCount--;
-    console.log(`#${worker.id} disconnected`);
+    console.warn(`#${worker.process.pid} disconnected`);
     cluster.fork();
   });
 
   //当有 worker 启动成功时
   cluster.on('message', function (data) {
-    process.stdout.write('.');
+    //如果发生错误
     if (!data.status) {
       console.error(os.EOL + data.message + os.EOL);
       return process.exit(1);
     }
+    //如果是某一 worker 重启
+    if (workerAllReady) {
+      return console.info(`#${data.pid} started`);
+    }
+    //初始起启信息
+    process.stdout.write('.');
     workerCount++;
     if (workerCount >= workerMax) {
       console.log(os.EOL + data.message);
+      workerAllReady = true;
     }
   });
 };
