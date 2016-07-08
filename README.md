@@ -9,12 +9,12 @@ CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭
 <img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
 
 # 快速搭建
-#### 全局安装 CIZE
+#### 全局安装 
 ```sh
 $ sudo install cize -g
 ```
 
-#### 新建 cizefile 添加 JOB
+#### 编写 Job
 
 新建 cizefile.js
 ```
@@ -47,7 +47,7 @@ The server on "localhost:9000" started
 接下来，可以在浏览器中访问 ```http://localhost:9000``` , 
 并可以在 UI 中手动触发这个名为 ```hello``` 的 Job
 
-# 定义 PROJECT
+# 定义 Project
 ```js
 const demo = cize.project('demo', {
   ...
@@ -58,7 +58,7 @@ const demo = cize.project('demo', {
 注意，即便一个项目不需要任何配置，也不能省略第二个参数，
 没有第二个参数时 ```cize.project(name)``` 为获取指定的项目
 
-# 定义 JOB
+# 定义 Job
 假定现在已经有一个定义好的名为 ```demo``` 的 ```project``` 
 
 #### 用 js 编写一个 Job
