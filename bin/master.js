@@ -6,8 +6,7 @@ const os = require('os');
 const stp = require('stp');
 const console = require('console3');
 const chokidar = require('chokidar');
-
-const WORKER_START_DELAY = 500;
+const consts = require('./consts');
 
 module.exports = function (cmdline) {
 
@@ -49,7 +48,7 @@ module.exports = function (cmdline) {
     if ((--num) <= 0) return;
     setTimeout(function () {
       startWorkers(num);
-    }, WORKER_START_DELAY);
+    }, consts.WORKER_START_DELAY);
   }
   startWorkers(workerMax);
 
@@ -80,26 +79,14 @@ module.exports = function (cmdline) {
     }
   });
 
-  //结束一组工作进程
-  function killWorkers(workers) {
-    var worker = workers.shift();
-    worker.kill();
-    if (workers.length <= 0) return;
-    setTimeout(function () {
-      killWorkers(workers);
-    }, WORKER_START_DELAY);
-  }
-
   //监控配置文件
   chokidar.watch(cmdline.configFile, {
     ignoreInitial: true
   }).on('all', function (event, path) {
     console.info(`"${cmdline.configFile}" changed`);
-    var workers = [];
     for (var id in cluster.workers) {
-      workers.push(cluster.workers[id]);
+      cluster.workers[id].send(consts.WORKER_EXIT_CODE);
     }
-    killWorkers(workers);
   });
 
 };

@@ -2,6 +2,7 @@ const cluster = require('cluster');
 const ci = require('../');
 const utils = ci.utils;
 const path = require('path');
+const consts = require('./consts');
 
 module.exports = function (cmdline) {
 
@@ -13,6 +14,15 @@ module.exports = function (cmdline) {
       pid: process.pid,
       workerId: cluster.worker.id
     });
+  });
+
+  //等待重启事件
+  cluster.worker.on('message', function (code) {
+    if (code != consts.WORKER_EXIT_CODE) return;
+    cluster.worker.disconnect();
+    setTimeout(function () {
+      process.exit(1);
+    }, consts.WORKER_EXIT_DELAY);
   });
 
   //默认或 cli 配置
