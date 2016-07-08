@@ -9,12 +9,12 @@ CIZE 是一个「持续集成」工具，希望能让开发人员更快捷的搭
 <img src="https://raw.githubusercontent.com/houfeng/cize/master/screenshot/monitor.png" width="888"/>
 
 # 快速搭建
-#### 全局安装 
+### 全局安装 
 ```sh
 $ sudo install cize -g
 ```
 
-#### 编写 Job
+### 编写 Job
 
 新建 cizefile.js
 ```
@@ -61,7 +61,7 @@ const demo = cize.project('demo', {
 # 定义 Job
 假定现在已经有一个定义好的名为 ```demo``` 的 ```project``` 
 
-#### 用 js 编写一个 Job
+### 用 js 编写一个 Job
 ```js
 demo.job('test', function (self) {
   self.console.log('test');
@@ -70,7 +70,7 @@ demo.job('test', function (self) {
 ```
 这是最基础的 Job 类型，是其它 Job 类型或「扩展」的基础。
 
-#### 用 shell 编写一个 job
+### 用 shell 编写一个 job
 ```js
 demo.job('test', cize.shell(function () {
   /*
@@ -80,7 +80,7 @@ demo.job('test', cize.shell(function () {
 ```
  定义一个用 SHELL 编写的 JOB，用到了 cize.shell，这是一个「内置扩展」
 
-#### 定时执行的 Job
+### 定时执行的 Job
 ```js
 demo.job('test', cize.cron('* */2 * * * *', cize.shell(function () {
   /*
@@ -90,7 +90,7 @@ demo.job('test', cize.cron('* */2 * * * *', cize.shell(function () {
 ```
 如上定义了一个每两分种触发一次的 Job 并且，嵌套使用了 shell.
 
-#### 监听其它 Job 的 Job
+### 监听其它 Job 的 Job
 ```js
 demo.job('test2', cize.by('test1', function(self){
   self.console.log('hello');
@@ -99,7 +99,7 @@ demo.job('test2', cize.by('test1', function(self){
 ```
 如下，在 test1 执行成功后，将会触发 test2
 
-#### 串行执行的 Job
+### 串行执行的 Job
 ```js
 demo.job('test', cize.series([
   "test1",
@@ -113,7 +113,7 @@ demo.job('test', cize.series([
 series 是一个内置扩展，可以定义一个「串行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
 也可以是指定要调用的其它 Job 的名称。
 
-#### 并行执行的 Job
+### 并行执行的 Job
 ```js
 demo.job('test', cize.parallel([
   "test1",
@@ -127,7 +127,7 @@ demo.job('test', cize.parallel([
 series 是一个内置扩展，可以定义一个「并行执行」多个步骤的任务列表，每个步骤可以是一个任意类型的 job，
 也可以是指定要调用的其它 Job 的名称。
 
-#### 不同类型的 JOB 嵌套
+### 不同类型的 JOB 嵌套
 CIZE 所有的 Job 可以自由嵌套，例如：
 ```js
 demo.job('test', cize.parallel([
@@ -151,7 +151,7 @@ demo.job('test', cize.parallel([
 
 # 有关服务配置
 
-#### 在 cizefile.js 中配置
+### 在 cizefile.js 中配置
 ```js
 cize.config({
   port: 9000,
@@ -159,7 +159,7 @@ cize.config({
 });
 ```
 
-#### 通过命令行工具
+### 通过命令行工具
 ```js
 cize ./ -p=port -s=secret
 ```
