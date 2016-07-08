@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "dbVersion": "1",
   "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
@@ -10,6 +10,9 @@
   "scripts": {
     "test": "mocha -t 5s",
     "cover": "istanbul cover _mocha"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "keywords": [
     "ci",
@@ -50,6 +53,7 @@
     "sqlite3": "^3.1.4",
     "stp": "0.0.2"
   },
+  "optionalDependencies": {},
   "devDependencies": {
     "istanbul": "^0.4.3",
     "mocha": "^2.5.3"

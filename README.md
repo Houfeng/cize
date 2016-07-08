@@ -43,23 +43,13 @@ cize.config({
 const demo = cize.project('demo', {});
 
 /**
- * 定义一个 JOB，这是一个最基本的 JOB，
- * 其它各类，都是在此基础之上的「扩展」
+ * 定义一个 JOB，这是一个最基本的 JOB
  **/
-demo.job('hello1', function (self) {
+demo.job('hello', function (self) {
   self.console.log('hello world');
   self.done();
 });
 
-/**
- * 定义一个用 SHELL 编写的 JOB
- * 如下用到了 cize.shell，这是多个「内置扩展」中的一个
- **/
-demo.job('hello2', cize.shell(function () {
-  /*
-    echo "hello world"
-  */
-}));
 ```
 
 然后，在「工作目录」中执行
@@ -67,18 +57,56 @@ demo.job('hello2', cize.shell(function () {
 $ cize
 ```
 
-即可启动 CI 服务
+即可启动 CIZE 服务
 ```
 $ cize
 Strarting...
-The server on "localhost:9000" started #30180
-The server on "localhost:9000" started #30183
-The server on "localhost:9000" started #30182
-The server on "localhost:9000" started #30181
+The server on "localhost:9000" started 
 ```
 默认会启动和 CPU 核数相同的「工作进程」。
 
-接下来，可以在浏览器中访问 ```http://localhost:9000```
+接下来，可以在浏览器中访问 ```http://localhost:9000``` , 
+可以在 UI 中手动触发这个名为 ```hello``` 的 Job
+
+# 定义 JOB
+假定现在已经有一个定义好的名为 ```demo``` 的 ```project``` 
+
+#### 用 js 编写一个 Job
+```js
+demo.job('test', function (self) {
+
+});
+```
+这是最基础的 Job 类型，是其它 Job 类型或「扩展」的基础。
+
+#### 用 shell 编写一个 job
+```js
+/**
+ * 定义一个用 SHELL 编写的 JOB
+ * 如下用到了 cize.shell，这是一个「内置扩展」
+ **/
+demo.job('test', cize.shell(function () {
+  /*
+    echo "hello world"
+  */
+}));
+```
+
+#### 定时执行的 Job
+```
+```
+
+#### 监听其它 Job 的 Job
+```
+```
+
+#### 串行执行的 Job
+```
+```
+
+#### 并行执行的 Job
+```
+```
 
 # 更多内容
 
