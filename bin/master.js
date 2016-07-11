@@ -60,7 +60,12 @@ module.exports = function (cmdline) {
   });
 
   //当有 worker 启动成功时
-  cluster.on('message', function (data) {
+  cluster.on('message', function (worker, data, handle) {
+    if (arguments.length === 2) {
+      handle = data;
+      data = worker;
+      worker = undefined;
+    }
     //如果发生错误
     if (!data.status) {
       console.error(os.EOL + data.message + os.EOL);
