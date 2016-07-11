@@ -34,6 +34,15 @@ demo1.job('test', ci.shell(function () {
   return false;
 });
 
+demo1.job('s', ci.parallel([
+  function (self) {
+    self.done(new Error('1'));
+  },
+  function (self) {
+    self.done(new Error('2'));
+  }
+]))
+
 //demo1.job('cron', ci.cron('*/2 * * * * *', 'build'));
 
 ci.start();
