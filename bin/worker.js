@@ -28,7 +28,7 @@ module.exports = function (cmdline) {
   //默认或 cli 配置
   ci.config({
     workspace: path.dirname(cmdline.configFile),
-    port: Number(cmdline.options.getValue('-p')) || 9000,
+    port: Number(cmdline.options.getValue('-p')),
     secret: cmdline.options.getValue('-s')
   });
 
