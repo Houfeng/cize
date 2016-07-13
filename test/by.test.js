@@ -35,14 +35,18 @@ describe('by', function () {
 
   it('#by name', function (done) {
     var test2Done = false;
+    var test1Ins = null;
     testProject.job('test1', function (self) {
+      test1Ins = self;
       self.done();
     });
     testProject.job('test2', ci.by(['test1'], function (self) {
       test2Done = true;
       self.done();
     }));
-    testProject.on('job.end:test2', function () {
+    testProject.on('job.end:test2', function (self) {
+      assert.ok(self.target instanceof testProject.job('test1'));
+      assert.equal(self.target, test1Ins);
       assert.equal(test2Done, true);
       done();
     });
