@@ -107,7 +107,7 @@ const MainController = nokit.define({
       if (!record) return self.context.notFound();
       self.record = record;
       var paths = self.ci.getContextPaths(record.contextId);
-      var outFile = path.normalize(`${paths.out}/${record._id}.txt`);
+      var outFile = path.normalize(`${paths.out}/${record.projectName}.${record.name}.txt`);
       fs.exists(outFile, function (exists) {
         if (!exists) {
           self.record.out = 'not found';

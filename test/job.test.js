@@ -49,7 +49,9 @@ describe('job', function () {
       testProject.job('invoke', function (self) {
         self.invoke('test', self.done.bind(self));
       });
-      testProject.invoke('invoke', { name: 'test' }, function (err) {
+      testProject.invoke('invoke', {
+        params: { name: 'test' }
+      }, function (err) {
         if (err) throw err;
         assert.equal(testParams.name, 'test');
         done();
@@ -61,7 +63,9 @@ describe('job', function () {
       testProject.job('invoke', function (self) {
         self.invoke('test.test', self.done.bind(self));
       });
-      testProject.invoke('invoke', { name: 'test' }, function (err) {
+      testProject.invoke('invoke', {
+        params: { name: 'test' }
+      }, function (err) {
         if (err) throw err;
         assert.equal(testParams.name, 'test');
         done();
@@ -77,7 +81,9 @@ describe('job', function () {
         });
         self.invoke(ChildJob, self.done.bind(self));
       });
-      testProject.invoke('invoke', { name: 'test' }, function (err) {
+      testProject.invoke('invoke', {
+        params: { name: 'test' }
+      }, function (err) {
         if (err) throw err;
         assert.equal(testParams.name, 'test');
         done();

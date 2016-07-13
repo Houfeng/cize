@@ -54,7 +54,9 @@ describe('server', function () {
 
   describe('#invoke()', function () {
     it('define project', function (done) {
-      ci.invoke('test', 'test', { test: true }, function (err) {
+      ci.invoke('test', 'test', {
+        params: { test: true }
+      }, function (err) {
         if (err) throw err;
         assert.equal(testInstance.name, 'test');
         assert.equal(testParams.test, true);
