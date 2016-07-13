@@ -3,6 +3,7 @@ const ci = require('../');
 const utils = ci.utils;
 const path = require('path');
 const consts = require('./consts');
+const moduleCache = require('module')._cache;
 
 module.exports = function (cmdline) {
 
@@ -16,13 +17,21 @@ module.exports = function (cmdline) {
     });
   });
 
+  //加载配置
+  function loadConfig() {
+    //清理缓存
+    moduleCache[cmdline.configFile] = null;
+    //加载 cizefile 配置
+    var config = require(cmdline.configFile);
+    if (utils.isFunction(config)) {
+      config(ci);
+    }
+  };
+
   //等待重启事件
   cluster.worker.on('message', function (code) {
-    if (code != consts.WORKER_EXIT_CODE) return;
-    cluster.worker.disconnect();
-    setTimeout(function () {
-      process.exit(1);
-    }, consts.WORKER_EXIT_DELAY);
+    if (code != consts.WORKER_RLOAD_CODE) return;
+    loadConfig();
   });
 
   //默认或 cli 配置
@@ -32,11 +41,8 @@ module.exports = function (cmdline) {
     secret: cmdline.options.getValue('-s')
   });
 
-  //cizefile 配置
-  var conf = require(cmdline.configFile);
-  if (utils.isFunction(conf)) {
-    conf(ci);
-  }
+  //加载 cizefile
+  loadConfig();
 
   //在 worker 中启动服务
   ci.start(function (err, info) {

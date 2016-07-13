@@ -90,7 +90,7 @@ module.exports = function (cmdline) {
   }).on('all', function (event, path) {
     console.info(`"${cmdline.configFile}" changed`);
     for (var id in cluster.workers) {
-      cluster.workers[id].send(consts.WORKER_EXIT_CODE);
+      cluster.workers[id].send(consts.WORKER_RLOAD_CODE);
     }
   });
 
