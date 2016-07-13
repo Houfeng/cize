@@ -18,16 +18,16 @@ const demo = cize.project('demo', {});
  * 定义一个 JOB，这是一个最基本的 JOB，
  * 其它各类，都是在此基础之上的「扩展」   
  **/
-demo.job('hello1', function (self) {
+demo.job('hello-by-js', function (self) {
   self.console.log('hello world');
   self.done();
-});
+}); 
 
 /**
  * 定义一个用 SHELL 编写的 JOB
  * 如下用到了 cize.shell，这是多个「内置扩展」中的一个
  **/
-demo.job('hello2', cize.shell(function () {
+demo.job('hello-by-shell', cize.shell(function () {
   /*
     echo "hello world"
     npm test 
