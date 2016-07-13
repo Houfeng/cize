@@ -14,9 +14,9 @@ cize.config({
  **/
 const demo = cize.project('demo', {});
 
-/**
+/**  
  * 定义一个 JOB，这是一个最基本的 JOB，
- * 其它各类，都是在此基础之上的「扩展」  
+ * 其它各类，都是在此基础之上的「扩展」   
  **/
 demo.job('hello1', function (self) {
   self.console.log('hello world');

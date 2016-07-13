@@ -4,6 +4,7 @@ const utils = ci.utils;
 const path = require('path');
 const consts = require('./consts');
 const moduleCache = require('module')._cache;
+const console = require('console3');
 
 module.exports = function (cmdline) {
 
@@ -32,6 +33,7 @@ module.exports = function (cmdline) {
   cluster.worker.on('message', function (code) {
     if (code != consts.WORKER_RLOAD_CODE) return;
     loadConfig();
+    console.info(`#${process.pid} to reload`);
   });
 
   //默认或 cli 配置
