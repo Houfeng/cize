@@ -14,7 +14,7 @@
   "trigger": "觸發",
   "cancel": "取消",
   "close": "關閉",
-  "json_format": "JSON格式…",
+  "params_format": "YAML/JSON ...",
   "token": "金鑰",
   "alert": "提示",
   "noProjectsOrJobs": "沒有項目或任務",

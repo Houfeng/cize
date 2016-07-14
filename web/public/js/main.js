@@ -54,9 +54,13 @@
     try {
       params = JSON.parse(params);
     } catch (err) {
-      paramsInput.attr('title', err.message);
-      confirmButton.attr('title', err.message);
-      return paramsInput.addClass('danger');
+      try {
+        params = jsyaml.load(params);
+      } catch (err) {
+        paramsInput.attr('title', err.message);
+        confirmButton.attr('title', err.message);
+        return paramsInput.addClass('danger');
+      }
     }
     var triggerButton = $('#btn-trigger');
     var url = triggerButton.attr('data-trigger');

@@ -14,7 +14,7 @@
   "trigger": "Trigger",
   "cancel": "Cancel",
   "close": "Close",
-  "json_format": "JSON format ...",
+  "params_format": "YAML/JSON ...",
   "token": "Token",
   "alert": "Alert",
   "noProjectsOrJobs": "No projects or jobs",
