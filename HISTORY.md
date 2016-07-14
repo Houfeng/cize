@@ -1,3 +1,6 @@
+### 0.1.7
+1. Job.beforeRun 支持异步方式
+
 ### 0.1.6
 1. 改进父子 Job 标准输入合并
 2. 改进内置扩展 cize.by/cize.series/cize.parallel

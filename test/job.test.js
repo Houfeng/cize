@@ -92,6 +92,87 @@ describe('job', function () {
 
   });
 
+
+  describe('#beforeRun()', function () {
+    it('sync refused', function (done) {
+      var execed = false;
+      testProject.job('test', function (self) {
+        execed = true;
+        self.done();
+      }).beforeRun(function (self) {
+        return false;
+      });
+      testProject.invoke('test', function (err) {
+        assert.equal(err.message, 'Refused to run');
+        assert.equal(execed, false);
+        done();
+      });
+    });
+
+    it('sync allowed', function (done) {
+      var execed = false;
+      testProject.job('test', function (self) {
+        execed = true;
+        self.done();
+      }).beforeRun(function (self) {
+        return;
+      });
+      testProject.invoke('test', function (err) {
+        assert.equal(execed, true);
+        done();
+      });
+    });
+
+    it('async refused', function (done) {
+      var execed = false;
+      testProject.job('test', function (self) {
+        execed = true;
+        self.done();
+      }).beforeRun(function (self, beforeRunDone) {
+        setTimeout(function () {
+          beforeRunDone(false);
+        }, 10);
+      });
+      testProject.invoke('test', function (err) {
+        assert.equal(err.message, 'Refused to run');
+        assert.equal(execed, false);
+        done();
+      });
+    });
+
+    it('async allowed', function (done) {
+      var execed = false;
+      testProject.job('test', function (self) {
+        execed = true;
+        self.done();
+      }).beforeRun(function (self, beforeRunDone) {
+        setTimeout(function () {
+          beforeRunDone();
+        }, 10);
+      });
+      testProject.invoke('test', function (err) {
+        assert.equal(execed, true);
+        done();
+      });
+    });
+
+  });
+
+  describe('#afterRun()', function () {
+    it('afterRun', function (done) {
+      var execed = false;
+      testProject.job('test', function (self) {
+        self.done();
+      }).afterRun(function (self) {
+        execed = true;
+      });
+      testProject.invoke('test', function (err) {
+        assert.equal(execed, true);
+        done();
+      });
+    });
+  });
+
   after(function (done) {
     setTimeout(function () {
       ci.clean({}, function (err) {
