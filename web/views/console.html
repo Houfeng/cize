@@ -1,7 +1,7 @@
 <div class="panel-heading text-uppercase">
   <i class="fa fa-terminal" aria-hidden="true"></i>
   <%= $.locale.console() %>
-  <a class="pull-right" data-pjax-container="#panel-left,#panel-center,#panel-right" href="/p/<%= this.projectName %>/<%= this.jobName %>">
+  <a class="pull-right" data-pjax-container="#panel-left,#panel-center,#panel-right" href="/projects/<%= this.projectName %>/jobs/<%= this.jobName %>">
   <i class="fa fa-reply" aria-hidden="true" id="btn-back"></i>
   <%= $.locale.back() %>
   </a>
@@ -14,7 +14,7 @@
         # <%= record.sn %> 
         <i class="fa <%= $.statusIcons[record.status] %> pull-right" aria-hidden="true"></i>
         <% if(record.status == 300){ %>
-        <i class="fa fa-play-circle pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<%= $.locale.rerun() %>" data-rerun="/p/<%= this.projectName %>/<%= this.jobName %>/<%= record.sn %>/rerun"></i>
+        <i class="fa fa-play-circle pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<%= $.locale.rerun() %>" data-rerun="/projects/<%= this.projectName %>/jobs/<%= this.jobName %>/records/<%= record.sn %>/rerun"></i>
         <% } %>
       </h4>
       <div class="list-group-item-text" style="padding:5px 0">

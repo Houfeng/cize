@@ -14,7 +14,7 @@ const TriggerController = nokit.define({
   /**
    * 默认 action
    **/
-  index: function () {
+  trigger: function () {
     var self = this;
     self.server.ci.invoke(
       self.context.params.project,

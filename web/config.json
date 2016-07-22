@@ -12,15 +12,13 @@
         "target": "./auth",
         "ignoreAuth": true
       },
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": {
-        "target": "./trigger"
-      },
-      "/setting": "./setting",
       "/": "./main",
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}/console": "./main console",
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}/{sn:^[0-9]+$}": "./main",
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
-      "/p/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main"
+      "/setting": "./setting",
+      "/projects/{project:^[a-zA-Z0-9\\_\\-]+$}/jobs/{job:^[a-zA-Z0-9\\_\\-]+$}/records/{sn:^[0-9]+$}/console": "./main console",
+      "/projects/{project:^[a-zA-Z0-9\\_\\-]+$}/jobs/{job:^[a-zA-Z0-9\\_\\-]+$}/records/{sn:^[0-9]+$}": "./main",
+      "/projects/{project:^[a-zA-Z0-9\\_\\-]+$}/jobs/{job:^[a-zA-Z0-9\\_\\-]+$}": "./main",
+      "/projects/{project:^[a-zA-Z0-9\\_\\-]+$}": "./main",
+      "/api/projects/{project:^[a-zA-Z0-9\\_\\-]+$}/jobs/{job:^[a-zA-Z0-9\\_\\-]+$}/trigger": "./api trigger"
     }
   },
   "folders": {
