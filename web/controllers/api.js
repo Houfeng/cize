@@ -226,6 +226,11 @@ const ApiController = nokit.define({
           message: err.message
         });
       }
+      if (!record) {
+        return this.send(404, {
+          message: 'Record not found'
+        });
+      }
       if (callback) {
         return callback(err, record);
       }
