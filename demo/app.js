@@ -11,12 +11,15 @@ var demo1 = ci.project('demo1', {
 });
 
 demo1.job('test', ci.parallel(function () {
-  this.console.error('1');
-  this.done(new Error(0));
+  this.done(new Error(1));
 }, function () {
-  this.console.error('2');
-  this.done();
+  this.done(new Error(2));
 }));
 
+demo1.job('shell', ci.shell(function () {
+  /*
+  ping www.baidu.com
+  */
+}));
 
 ci.start();

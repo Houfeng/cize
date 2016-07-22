@@ -14,7 +14,7 @@
         # <%= record.sn %> 
         <i class="fa <%= $.statusIcons[record.status] %> pull-right" aria-hidden="true"></i>
         <% if(record.status == 300){ %>
-        <i class="fa fa-play-circle pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<%= $.locale.rerun() %>" data-rerun="/projects/<%= this.projectName %>/jobs/<%= this.jobName %>/records/<%= record.sn %>/rerun"></i>
+        <i class="fa fa-play-circle pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<%= $.locale.rerun() %>" data-rerun="/api/projects/<%= this.projectName %>/jobs/<%= this.jobName %>/records/<%= record.sn %>/rerun"></i>
         <% } %>
       </h4>
       <div class="list-group-item-text" style="padding:5px 0">

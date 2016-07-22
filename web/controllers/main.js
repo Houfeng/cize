@@ -1,11 +1,6 @@
 const async = require('async');
-const fs = require('fs');
-const path = require('path');
-const Convert = require('ansi-to-html');
-const convert = new Convert({
-  fg: '#333',
-  bg: '#fff'
-});
+const utils = require('../common/utils');
+
 /**
  * 定义 MainController
  **/
@@ -106,18 +101,10 @@ const MainController = nokit.define({
       if (err) return callback(err);
       if (!record) return self.context.notFound();
       self.record = record;
-      var paths = self.ci.getContextPaths(record.contextId);
-      var outFile = path.normalize(`${paths.out}/${record.projectName}.${record.name}.txt`);
-      fs.exists(outFile, function (exists) {
-        if (!exists) {
-          self.record.out = 'not found';
-          return callback();
-        }
-        fs.readFile(outFile, function (err, data) {
-          if (err) return callback(err);
-          self.record.out = convert.toHtml(data.toString().replace(/\[2K\[0G/igm, ''));
-          callback();
-        });
+      self.record.getOut(function (err, data) {
+        if (err) return callback(err);
+        self.record.out = utils.ansiToHtml(data);
+        callback();
       });
     });
   },
@@ -127,43 +114,6 @@ const MainController = nokit.define({
    **/
   index: function () {
     this.render("main", this);
-  },
-
-  /**
-   * 显示控制台输出
-   **/
-  console: function () {
-    if (this.record) {
-      this.context.text(this.record.out, 'text/plain');
-    } else {
-      this.context.notFound();
-    }
-  },
-
-  /**
-   * 重新运行一个 job
-   **/
-  rerun: function () {
-    var self = this;
-    var paths = self.ci.getContextPaths(self.record.contextId);
-    fs.readFile(paths.params, function (err, data) {
-      if (err) return self.context.send({
-        status: false,
-        time: new Date()
-      });
-      self.server.ci.invoke(
-        self.record.projectName,
-        self.record.name,
-        JSON.parse((data || '{}').toString()),
-        null,
-        function (started) {
-          self.context.send({
-            status: started,
-            time: new Date()
-          });
-        }
-      );
-    });
   }
 
 });
