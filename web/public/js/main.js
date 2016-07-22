@@ -18,10 +18,10 @@
     if (!isRuning) {
       return fetchOut(LONG_INTERVAL);
     }
-    var url = location.href.split('?')[0];
-    $.get(url + '/console?_t=' + Date.now(), function (data) {
-      if (console.html() != data) {
-        console.html(data);
+    var url = '/api' + location.pathname + '/console?_t=' + Date.now();
+    $.get(url, function (rs) {
+      if (console.html() != rs.out) {
+        console.html(rs.out);
         console.prop('scrollTop', console.prop('scrollHeight'));
       }
       return fetchOut(SHORT_INTERVAL);
@@ -71,11 +71,11 @@
       dataType: 'json',
       data: JSON.stringify(params),
       success: function (res) {
-        if (!res.status) {
-          return paramsInput.addClass('danger');
-        }
         $('#panel-center .list-group .list-group-item.active').click();
         triggerDialog.modal('hide');
+      },
+      error: function (xhr) {
+        paramsInput.addClass('danger');
       }
     });
   });
@@ -89,7 +89,7 @@
   $(document).on('click', '[data-rerun]', function (event) {
     var url = $(this).attr('data-rerun');
     $.post(url + '?_t=' + Date.now(), function (res) {
-      if (!res.status) return $(this).addClass('danger');;
+      //if (!res.status) return $(this).addClass('danger');;
       $('#panel-center .list-group .list-group-item.active').click();
     });
     return false;
@@ -118,10 +118,10 @@
     if (!val || isNaN(val)) {
       return maxAgeInput.addClass('danger');
     }
-    $.post('/setting/token', {
+    $.post('/api/token', {
       maxAge: 60 * 60 * Number(val)
-    }, function (token) {
-      tokenArea.text(token);
+    }, function (rs) {
+      tokenArea.text(rs.token);
     });
   });
 
