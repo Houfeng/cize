@@ -1,4 +1,48 @@
 /**
+ * 公共函数
+ **/
+(function ($, $$) {
+
+  $$.ajax = function (url, options, data, callback) {
+    if (arguments.length == 3) {
+      callback = data;
+      data = options;
+      options = null;
+    } else if (arguments.length == 2) {
+      callback = options;
+      data = null;
+      options = null;
+    }
+    options = options || {};
+    callback = callback || function () { };
+    return $.ajax({
+      url: url + '?_t=' + Date.now(),
+      type: options.type || 'POST',
+      contentType: options.contentType || "application/json",
+      dataType: options.dataType || 'json',
+      data: JSON.stringify(data || options.data || ''),
+      success: function (rs) {
+        callback(null, rs);
+      },
+      error: function (xhr) {
+        callback(new Error('Ajax Error'), xhr);
+      }
+    });
+  };
+
+  $$.get = function (url, callback) {
+    return $$.ajax(url, {
+      type: 'GET'
+    }, callback);
+  };
+
+  $$.post = function (url, data, callback) {
+    return $$.ajax(url, null, data, callback);
+  };
+
+})(jQuery, this.$$ = {});
+
+/**
  * 定时刷新
  **/
 (function ($) {
@@ -18,8 +62,9 @@
     if (!isRuning) {
       return fetchOut(LONG_INTERVAL);
     }
-    var url = '/api' + location.pathname + '/console?_t=' + Date.now();
-    $.get(url, function (rs) {
+    var url = '/api' + location.pathname + '/console';
+    $$.get(url, function (err, rs) {
+      if (err) return alert(err.message);
       if (console.html() != rs.out) {
         console.html(rs.out);
         console.prop('scrollTop', console.prop('scrollHeight'));
@@ -64,19 +109,10 @@
     }
     var triggerButton = $('#btn-trigger');
     var url = triggerButton.attr('data-trigger');
-    $.ajax({
-      url: url + '?_t=' + Date.now(),
-      type: 'POST',
-      contentType: "application/json",
-      dataType: 'json',
-      data: JSON.stringify(params),
-      success: function (res) {
-        $('#panel-center .list-group .list-group-item.active').click();
-        triggerDialog.modal('hide');
-      },
-      error: function (xhr) {
-        paramsInput.addClass('danger');
-      }
+    $$.post(url, params, function (err) {
+      if (err) return paramsInput.addClass('danger');
+      $('#panel-center .list-group .list-group-item.active').click();
+      triggerDialog.modal('hide');
     });
   });
 
@@ -88,8 +124,8 @@
 (function ($) {
   $(document).on('click', '[data-rerun]', function (event) {
     var url = $(this).attr('data-rerun');
-    $.post(url + '?_t=' + Date.now(), function (res) {
-      //if (!res.status) return $(this).addClass('danger');;
+    $$.post(url, function (err) {
+      if (err) return $(this).addClass('danger');;
       $('#panel-center .list-group .list-group-item.active').click();
     });
     return false;
@@ -118,9 +154,10 @@
     if (!val || isNaN(val)) {
       return maxAgeInput.addClass('danger');
     }
-    $.post('/api/token', {
+    $$.post('/api/token', {
       maxAge: 60 * 60 * Number(val)
-    }, function (rs) {
+    }, function (err, rs) {
+      if (err) return alert(err.message);
       tokenArea.text(rs.token);
     });
   });
