@@ -15,12 +15,13 @@
     }
     options = options || {};
     callback = callback || function () { };
+    data = data || options.data;
     return $.ajax({
       url: url + '?_t=' + Date.now(),
       type: options.type || 'POST',
       contentType: options.contentType || "application/json",
       dataType: options.dataType || 'json',
-      data: JSON.stringify(data || options.data || ''),
+      data: data ? JSON.stringify(data) : data,
       success: function (rs) {
         callback(null, rs);
       },
@@ -33,7 +34,7 @@
   $$.get = function (url, callback) {
     return $$.ajax(url, {
       type: 'GET'
-    }, callback);
+    }, null, callback);
   };
 
   $$.post = function (url, data, callback) {
