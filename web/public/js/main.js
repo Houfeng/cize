@@ -26,7 +26,7 @@
         callback(null, rs);
       },
       error: function (xhr) {
-        callback(new Error('Ajax Error'), xhr);
+        callback(new Error('Ajax Error: ' + xhr.status), xhr);
       }
     });
   };
@@ -69,7 +69,7 @@
     }
     var url = '/api' + location.pathname + '/console';
     $$.get(url, function (err, rs) {
-      if (err) return alert(err.message);
+      if (err) return console.error(err);
       if (console.html() != rs.out) {
         console.html(rs.out);
         scrollToButtom();
@@ -165,7 +165,7 @@
     $$.post('/api/token', {
       maxAge: 60 * 60 * Number(val)
     }, function (err, rs) {
-      if (err) return alert(err.message);
+      if (err) return consoel.error(err);
       tokenArea.text(rs.token);
     });
   });
