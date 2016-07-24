@@ -251,6 +251,7 @@ const ApiController = nokit.define({
           });
         }
         self.send(200, {
+          status: record.status,
           out: utils.ansiToHtml(data)
         });
       });

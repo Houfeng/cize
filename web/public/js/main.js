@@ -51,32 +51,39 @@
   var LONG_INTERVAL = 7500;
   var SHORT_INTERVAL = 2500;
 
-  function _fetchOut(interval) {
-    var console = $('.console');
-    var spinner = $('.fa-spinner');
+  function _refresh(interval) {
+    var console = $('.console-wraper .console');
+    var spinner = $('.console-wraper .fa-spinner');
     var inConsole = console && console.length > 0;
     var isRuning = spinner && spinner.length > 0;
     if (!inConsole) {
       $('#panel-center .list-group .list-group-item.active').click();
-      return fetchOut(LONG_INTERVAL);
+      return refresh(LONG_INTERVAL);
     }
+    var scrollToButtom = function () {
+      console.prop('scrollTop', console.prop('scrollHeight'));
+    };
     if (!isRuning) {
-      return fetchOut(LONG_INTERVAL);
+      $('.console-wraper .list-group-item').click();
+      return refresh(LONG_INTERVAL);
     }
     var url = '/api' + location.pathname + '/console';
     $$.get(url, function (err, rs) {
       if (err) return alert(err.message);
       if (console.html() != rs.out) {
         console.html(rs.out);
-        console.prop('scrollTop', console.prop('scrollHeight'));
+        scrollToButtom();
       }
-      return fetchOut(SHORT_INTERVAL);
+      if (rs.status != 100) {
+        $('.console-wraper .list-group-item').click();
+      }
+      return refresh(SHORT_INTERVAL);
     });
   }
-  function fetchOut(interval) {
-    return setTimeout(_fetchOut, interval);
+  function refresh(interval) {
+    return setTimeout(_refresh, interval);
   }
-  fetchOut(SHORT_INTERVAL);
+  refresh(SHORT_INTERVAL);
 
 })(jQuery);
 
