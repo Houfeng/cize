@@ -9,7 +9,7 @@
 <div class="panel-body console-wraper">
   <% var record = this.record; %>
   <div class="list-group current-info">
-    <div class="list-group-item">
+    <div class="list-group-item" data-pjax-container="#panel-left,#panel-center,.current-info" href="/projects/<%= this.projectName %>/jobs/<%= this.jobName %>/records/<%= record.sn %>">
       <h4 class="list-group-item-heading">
         # <%= record.sn %> 
         <i class="fa <%= $.statusIcons[record.status] %> pull-right" aria-hidden="true"></i>
