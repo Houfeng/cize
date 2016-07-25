@@ -209,3 +209,7 @@ Example:
 # 更多内容
 
 请访问 wiki: [https://github.com/Houfeng/cize/wiki](https://github.com/Houfeng/cize/wiki)
+
+# 路线图
+- 所有 Job 都在单儿独立在一个进程中执行（现在可能会有 n 个 job 共用一个主进程）
+- 集成 Docker 
