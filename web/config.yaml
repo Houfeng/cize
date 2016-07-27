@@ -1,0 +1,39 @@
+handlers:
+  ^/: $./handlers/mvc
+
+filters: 
+  ^/@pjax: ../node_modules/nokit-pjax
+  ^/@auth: ./filters/auth
+
+mvc: 
+  routes: 
+    /auth: 
+      target: ./auth
+      ignoreAuth: true
+    /: ./main
+    /projects/{project}/jobs/{job}/records/{sn:^[0-9]+$}: ./main
+    /projects/{project}/jobs/{job}: ./main
+    /projects/{project}: ./main
+    get /api: ./api
+    post /api/token: ./api token
+    post /api/projects/{project}/jobs/{job}/trigger: ./api trigger
+    get /api/projects: ./api projects
+    get /api/records: ./api serverRecords
+    get /api/projects/{project}: ./api project
+    get /api/projects/{project}/jobs: ./api jobs
+    get /api/projects/{project}/records: ./api projectRecords
+    get /api/projects/{project}/jobs/{job}: ./api job
+    get /api/projects/{project}/jobs/{job}/records: ./api records
+    get /api/projects/{project}/jobs/{job}/records/{sn:^[0-9]+$}: ./api record
+    get /api/projects/{project}/jobs/{job}/records/{sn:^[0-9]+$}/console: ./api console
+    post /api/projects/{project}/jobs/{job}/records/{sn:^[0-9]+$}/rerun: ./api rerun
+
+public: 
+  ^/bootstrap(.*): ../node_modules/bootstrap/dist
+  ^/jquery(.*): ../node_modules/jquery/dist
+  ^/font-awesome(.*): ../node_modules/font-awesome
+  ^/pjax/(.*)$: ../node_modules/nokit-pjax/client
+  ^/js-yaml/(.*)$: ../node_modules/js-yaml/dist
+
+session: 
+  timeout: 7200
