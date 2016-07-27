@@ -3,8 +3,8 @@
     "^/": "$./handlers/mvc"
   },
   "filters": {
-    "^/": "../node_modules/nokit-pjax",
-    "^/:auth": "./filters/auth"
+    "^/@pjax": "../node_modules/nokit-pjax",
+    "^/@auth": "./filters/auth"
   },
   "mvc": {
     "routes": {
@@ -31,14 +31,12 @@
       "post /api/projects/{project:^[a-zA-Z0-9\\_\\-]+$}/jobs/{job:^[a-zA-Z0-9\\_\\-]+$}/records/{sn:^[0-9]+$}/rerun": "./api rerun"
     }
   },
-  "folders": {
-    "public": {
-      "^/bootstrap(.*)": "../node_modules/bootstrap/dist",
-      "^/jquery(.*)": "../node_modules/jquery/dist",
-      "^/font-awesome(.*)": "../node_modules/font-awesome",
-      "^/pjax/(.*)$": "../node_modules/nokit-pjax/client",
-      "^/js-yaml/(.*)$": "../node_modules/js-yaml/dist"
-    }
+  "public": {
+    "^/bootstrap(.*)": "../node_modules/bootstrap/dist",
+    "^/jquery(.*)": "../node_modules/jquery/dist",
+    "^/font-awesome(.*)": "../node_modules/font-awesome",
+    "^/pjax/(.*)$": "../node_modules/nokit-pjax/client",
+    "^/js-yaml/(.*)$": "../node_modules/js-yaml/dist"
   },
   "session": {
     "timeout": 7200
