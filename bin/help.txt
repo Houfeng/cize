@@ -2,10 +2,16 @@ Usage:
   ${cmd} [folder|file] [options]
 
 Options:
-  -w   set the number of workers
-  -p   set the port
-  -s   set the secret 
-  -h   display help information
+  -w, --worker      set the number of workers
+  -p, --port        set the port
+  -s, --secret      set the secret 
+  -m, --mode        run mode, in-process or new-process or docker
+  -h, --help        display help information
+  -v, --version     display version information
+      --project     project name
+      --job         job name
+      --params      invoke params
 
-Example:
-  ${cmd} ./ -p=9000 -s=12345 -w=4
+Examples:
+  ${cmd} ./ -p 9000 -s 12345 -w 4
+  ${cmd} ./ -project demo --job test --params '{"name":"test"}'
