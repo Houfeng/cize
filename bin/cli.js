@@ -26,15 +26,15 @@ cmdline
   .error(function (err) {
     console.error(err.message);
   })
-  .version(`${cmdline.NAME.toUpperCase()} ${cmdline.VERSION}${os.EOL}`)
+  .version(`${cmdline.NAME.toUpperCase()} ${cmdline.VERSION}`)
   .help(cmdline.HELP_INFO)
-  .option(['-w', '--worker'], { type: 'number' })
-  .option(['-p', '--port'], { type: 'number' })
-  .option(['-s', '--secret'], { type: 'string' })
-  .option(['-m', '--mode'], { type: 'string' })
-  .option('--project', { type: 'string' })
-  .option('--job', { type: 'string' })
-  .option('--params', { type: 'string' })
+  .option(['-p', '--port'], 'number')
+  .option(['-s', '--secret'], 'string')
+  .option(['-w', '--worker'], 'number')
+  .option(['-m', '--mode'], 'string')
+  .option('--project', 'string')
+  .option('--job', 'string')
+  .option('--params', 'string*')
   .handle(function ($0) {
     //计算 confPath
     cmdline.configFile = path.resolve(process.cwd(), $0 || './');
@@ -43,7 +43,6 @@ cmdline
     }
   })
   .handle({ options: ['--project', '--job'] }, function (project, job) {
-    console.log(project, job);
     require('./invoker')(cmdline);
     return false;
   })
