@@ -1,32 +1,18 @@
 const cluster = require('cluster');
-const ci = require('../');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
-const stp = require('stp');
 const console = require('console3');
 const chokidar = require('chokidar');
 const consts = require('./consts');
 
 module.exports = function (cmdline) {
 
-  //查看版本
-  function version() {
-    console.log(`${cmdline.NAME.toUpperCase()} ${cmdline.VERSION}${os.EOL}`);
-    return true;
-  }
-  if (cmdline.options.has('-v')) return version();
-
   //显示帮助
   function help() {
-    var info = fs.readFileSync(path.normalize(`${__dirname}/help.txt`)).toString();
-    console.log(stp(info, {
-      cmd: cmdline.NAME,
-      conf: cmdline.CONFIG_FILE_NAME
-    }) + os.EOL);
+    console.log(cmdline.HELP_INFO);
     return true;
   }
-  if (cmdline.options.has('-h')) return help();
 
   //显示启动信息
   console.write('Strarting.');
@@ -38,7 +24,7 @@ module.exports = function (cmdline) {
   }
 
   //初始化 worker 数量及记数变量
-  var workerMax = Number(cmdline.options.getValue('-w')) || os.cpus().length;
+  var workerMax = Number(cmdline.options.worker) || os.cpus().length;
   var workerCount = 0;
   var workerAllReady = false;
 
