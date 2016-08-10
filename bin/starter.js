@@ -22,15 +22,17 @@ exports.loadConfig = function () {
 
 exports.start = function (callback) {
 
-  //加载 cizefile
-  this.loadConfig();
-
   //默认或 cli 配置
   this.server.config({
+    configFile: this.cmdline.configFile,
     workspace: path.dirname(this.cmdline.configFile),
     port: Number(this.cmdline.options.port),
-    secret: this.cmdline.options.secret
+    secret: this.cmdline.options.secret,
+    mode: this.cmdline.options.mode
   });
+
+  //加载 cizefile
+  this.loadConfig();
 
   //在 worker 中启动服务
   this.server.start(callback);

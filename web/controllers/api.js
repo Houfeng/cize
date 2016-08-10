@@ -52,7 +52,7 @@ const ApiController = nokit.define({
    **/
   trigger: function (context, params) {
     var self = this;
-    self.server.ci.invoke(
+    self.server.ci.externalInvoke(
       self.projectName,
       self.jobName,
       {

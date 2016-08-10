@@ -35,18 +35,18 @@ cmdline
   .option('--project', 'string')
   .option('--job', 'string')
   .option('--params', 'string*')
-  .handle(function ($0) {
+  .action(function ($1) {
     //计算 confPath
-    cmdline.configFile = path.resolve(process.cwd(), $0 || './');
+    cmdline.configFile = path.resolve(process.cwd(), $1 || './');
     if (!cmdline.CONFIG_FILE_REGEXP.test(cmdline.configFile)) {
       cmdline.configFile = path.normalize(`${cmdline.configFile}/${cmdline.CONFIG_FILE_NAME}`);
     }
   })
-  .handle({ options: ['--project', '--job'] }, function (project, job) {
+  .action({ options: ['--project', '--job'] }, function (project, job) {
     require('./invoker')(cmdline);
     return false;
   })
-  .handle(function () {
+  .action(function () {
     require(cluster.isMaster ? './master' : './worker')(cmdline);
     return false;
   })
