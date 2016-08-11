@@ -1,6 +1,6 @@
 {
   "name": "cize",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "dbVersion": "1",
   "description": "Cize 是一个「持续集成」工具",
   "main": "index.js",
@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ansi-to-html": "^0.4.1",
+    "ansi-to-html-umd": "^0.4.2",
     "async": "^1.5.2",
     "bootstrap": "^3.3.7",
     "chokidar": "^1.6.0",

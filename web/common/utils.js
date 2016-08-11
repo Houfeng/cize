@@ -1,6 +1,6 @@
 const utils = nokit.utils;
 utils.pkg = require('../../package.json');
-const Convert = require('ansi-to-html');
+const Convert = require('ansi-to-html-umd');
 
 const convert = new Convert({
   fg: '#333',
