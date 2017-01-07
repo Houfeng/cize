@@ -6,7 +6,7 @@
  **/
 cize.config({
   secret: '12345',
-  mode: 'new-process'
+  //mode: 'new-process'
 });
 
 /**
