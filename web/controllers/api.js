@@ -52,19 +52,25 @@ const ApiController = nokit.define({
    **/
   trigger: function (context, params) {
     var self = this;
-    self.server.ci.externalInvoke(
-      self.projectName,
-      self.jobName,
-      {
-        params: params || self.params
-      },
-      null,
-      function (started) {
-        self.send(started ? 202 : 400, {
-          message: started ? 'Job is triggered' : 'Trigger failed'
-        });
-      }
-    );
+    self.server.ci.store.resolveNextRecordSN({
+      projectName: self.projectName,
+      name: self.jobName,
+      refused: false
+    }, function(err, sn) {
+      self.server.ci.externalInvoke(
+        self.projectName,
+        self.jobName, {
+          params: params || self.params
+        },
+        null,
+        function(started) {
+          self.send(started ? 202 : 400, {
+            message: started ? 'Job is triggered' : 'Trigger failed',
+            sn: sn
+          });
+        }
+      );
+    });
   },
 
   /**
