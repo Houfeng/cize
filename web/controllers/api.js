@@ -14,7 +14,7 @@ const ApiController = nokit.define({
     this.projectName = this.context.params.project;
     this.jobName = this.context.params.job;
     this.recordSn = this.context.params.sn;
-    this.params = this.context.request.body || this.context.request.query;
+    this.params = this.context.request._query || this.context.request.query || this.context.request.body;
     this.ready();
   },
 
@@ -256,10 +256,34 @@ const ApiController = nokit.define({
             message: err.message
           });
         }
-        self.send(200, {
-          status: record.status,
-          out: utils.ansiToHtml(data)
-        });
+        if (self.params && self.params['return_type']) {
+          switch (self.params['return_type']) {
+            case 'json':
+              try {
+                  self.send(200, {
+                      status: record.status,
+                      out: JSON.parse(data)
+                  });
+              } catch (e) {
+                  self.send(200, {
+                      status: 403,
+                      out: utils.ansiToHtml(data),
+                      error: e.toString()
+                  });
+              }
+              break;
+            default:
+              self.send(200, {
+                  status: record.status,
+                  out: utils.ansiToHtml(data)
+              });
+          }
+        } else {
+          self.send(200, {
+              status: record.status,
+              out: utils.ansiToHtml(data)
+          });
+        }
       });
     });
   },
