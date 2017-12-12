@@ -1,5 +1,6 @@
 var fs = require('fs');
 const utils = require('../common/utils');
+const _ = require('lodash');
 
 /**
  * ApiController
@@ -14,7 +15,13 @@ const ApiController = nokit.define({
     this.projectName = this.context.params.project;
     this.jobName = this.context.params.job;
     this.recordSn = this.context.params.sn;
-    this.params = this.context.request.body || this.context.request.query;
+    if(this.context.request){
+        this.params = _.assign({}, this.context.request._query);
+        this.params = _.assign(this.params, this.context.request.query);
+        this.params = _.assign(this.params, this.context.request.body);
+    } else {
+        this.params = {};
+    }
     this.ready();
   },
 
@@ -52,19 +59,25 @@ const ApiController = nokit.define({
    **/
   trigger: function (context, params) {
     var self = this;
-    self.server.ci.externalInvoke(
-      self.projectName,
-      self.jobName,
-      {
-        params: params || self.params
-      },
-      null,
-      function (started) {
-        self.send(started ? 202 : 400, {
-          message: started ? 'Job is triggered' : 'Trigger failed'
-        });
-      }
-    );
+    self.server.ci.store.resolveNextRecordSN({
+      projectName: self.projectName,
+      name: self.jobName,
+      refused: false
+    }, function(err, sn) {
+      self.server.ci.externalInvoke(
+        self.projectName,
+        self.jobName, {
+          params: params || self.params
+        },
+        null,
+        function(started) {
+          self.send(started ? 202 : 400, {
+            message: started ? 'Job is triggered' : 'Trigger failed',
+            sn: sn
+          });
+        }
+      );
+    });
   },
 
   /**
@@ -250,10 +263,34 @@ const ApiController = nokit.define({
             message: err.message
           });
         }
-        self.send(200, {
-          status: record.status,
-          out: utils.ansiToHtml(data)
-        });
+        if (self.params && self.params['return_type']) {
+          switch (self.params['return_type']) {
+            case 'json':
+              try {
+                  self.send(200, {
+                      status: record.status,
+                      out: JSON.parse(data)
+                  });
+              } catch (e) {
+                  self.send(200, {
+                      status: 403,
+                      out: utils.ansiToHtml(data),
+                      error: e.toString()
+                  });
+              }
+              break;
+            default:
+              self.send(200, {
+                  status: record.status,
+                  out: utils.ansiToHtml(data)
+              });
+          }
+        } else {
+          self.send(200, {
+              status: record.status,
+              out: utils.ansiToHtml(data)
+          });
+        }
       });
     });
   },
