@@ -1,5 +1,6 @@
 var fs = require('fs');
 const utils = require('../common/utils');
+const _ = require('lodash');
 
 /**
  * ApiController
@@ -14,7 +15,13 @@ const ApiController = nokit.define({
     this.projectName = this.context.params.project;
     this.jobName = this.context.params.job;
     this.recordSn = this.context.params.sn;
-    this.params = this.context.request._query || this.context.request.query || this.context.request.body;
+    if(this.context.request){
+        this.params = _.assign({}, this.context.request._query);
+        this.params = _.assign(this.params, this.context.request.query);
+        this.params = _.assign(this.params, this.context.request.body);
+    } else {
+        this.params = {};
+    }
     this.ready();
   },
 
